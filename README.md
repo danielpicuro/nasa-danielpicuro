@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Space Explorer
+
+Space Explorer es un proyecto web desarrollado con Next.js que simula una plataforma de exploración espacial inspirada en la NASA. El proyecto tiene como misión expandir la presencia humana en el espacio y avanzar en la exploración del cosmos.
+
+## Resumen del Proyecto
+
+Space Explorer fue fundado con la visión de acelerar el viaje de la humanidad para convertirse en una especie multiplanetaria. La plataforma ofrece:
+
+- Información sobre misiones espaciales actuales y futuras
+- Productos y tecnologías para la exploración espacial
+- Programas educativos y de participación ciudadana
+- Mapa interactivo de instalaciones y sitios de lanzamiento
+
+El proyecto incluye un plan de desarrollo en fases que abarca operaciones en órbita terrestre, exploración lunar, misiones a Marte y exploración del espacio profundo.
 
 ## Getting Started
 
@@ -15,10 +28,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More
 
