@@ -1,86 +1,42 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 /**
  * Componente MapComponent: Integración con Google Maps
- * Componente modular y escalable para mostrar mapas interactivos
+ * Componente modular y escalable para mostrar mapas interactivos usando iframe
  */
+type Marker = { position: { lat: number; lng: number }; title: string };
 interface MapComponentProps {
-  center?: { lat: number; lng: number };
-  zoom?: number;
-  markers?: Array<{
-    position: { lat: number; lng: number };
-    title?: string;
-  }>;
+  markers?: Marker[];
   height?: string;
   width?: string;
   className?: string;
+  mapUrl?: string;
+  zoom?: number;
+  center: { lat: number; lng: number };
 }
 
 const MapComponent: React.FC<MapComponentProps> = ({
-  center = { lat: 28.5618571, lng: -80.577366 }, // Cape Canaveral por defecto
-  zoom = 10,
-  markers = [],
-  height = '500px',
+  height = '450px',
   width = '100%',
   className = '',
+  mapUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.392595288302!2d-76.97982422525412!3d-12.085253488154592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c79f5dacafbf%3A0x2aecf92fd4325f0d!2sJockey%20Plaza!5e0!3m2!1ses-419!2spe!4v1759363178846!5m2!1ses-419!2spe',
 }) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const googleMapRef = useRef<google.maps.Map | null>(null);
-
-  useEffect(() => {
-    // Función para cargar el mapa
-    const initMap = () => {
-      if (!mapRef.current) return;
-
-      // Crear nueva instancia del mapa
-      const map = new google.maps.Map(mapRef.current, {
-        center,
-        zoom,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: true,
-        streetViewControl: true,
-        fullscreenControl: true,
-      });
-
-      // Guardar referencia al mapa
-      googleMapRef.current = map;
-
-      // Añadir marcadores si existen
-      markers.forEach((markerData) => {
-        new google.maps.Marker({
-          position: markerData.position,
-          map,
-          title: markerData.title,
-        });
-      });
-    };
-
-    // Cargar Google Maps API si no está ya cargada
-    if (window.google && window.google.maps) {
-      initMap();
-    } else {
-      console.warn('Google Maps API not loaded. Please include the API script in your HTML.');
-    }
-
-    // Cleanup
-    return () => {
-      googleMapRef.current = null;
-    };
-  }, [center, zoom, markers]);
-
   return (
-    <div 
-      ref={mapRef} 
-      style={{ height, width }} 
+    <div
+      style={{ height, width }}
       className={`bg-gray-200 ${className}`}
       data-testid="map-container"
     >
-      {/* Mensaje de fallback si Google Maps no está disponible */}
-      <div className="flex items-center justify-center h-full">
-        <p className="text-gray-500">
-          Loading map... If the map does&rsquo; appear, please ensure Google Maps API is properly loaded.
-        </p>
-      </div>
+      <iframe
+        src={mapUrl}
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Google Maps"
+      />
     </div>
   );
 };

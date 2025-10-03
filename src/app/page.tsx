@@ -14,11 +14,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section with Parallax */}
-      <ParallaxSection 
-        backgroundImage="/images/space-background.jpg" 
-        height="100vh"
-        overlayOpacity={0.6}
-      >
+      <ParallaxSection backgroundImage="/images/world.jpg" height="100vh" overlayOpacity={0.6}>
         <div className="text-center text-white">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">EXPLORE THE UNIVERSE</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
@@ -26,10 +22,16 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/get-started">
-              <Button size="lg" variant="primary">Get Started</Button>
+              <Button size="lg" variant="primary">
+                Get Started
+              </Button>
             </Link>
             <Link href="/mission">
-              <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-white border-white hover:bg-white hover:text-gray-900"
+              >
                 Our Mission
               </Button>
             </Link>
@@ -41,31 +43,38 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Discover Space Exploration</h2>
-          
+
           <Grid cols={4} gap="lg">
             {[
               {
                 icon: faRocket,
                 title: 'Advanced Technology',
-                description: 'Cutting-edge spacecraft and propulsion systems designed for deep space exploration.'
+                description:
+                  'Cutting-edge spacecraft and propulsion systems designed for deep space exploration.',
               },
               {
                 icon: faSatellite,
                 title: 'Satellite Network',
-                description: 'Global network of satellites providing communication and research capabilities.'
+                description:
+                  'Global network of satellites providing communication and research capabilities.',
               },
               {
                 icon: faUserAstronaut,
                 title: 'Expert Team',
-                description: 'World-class scientists, engineers, and astronauts leading our missions.'
+                description:
+                  'World-class scientists, engineers, and astronauts leading our missions.',
               },
               {
                 icon: faGlobe,
                 title: 'Global Impact',
-                description: 'Discoveries that benefit humanity and advance our understanding of the universe.'
-              }
+                description:
+                  'Discoveries that benefit humanity and advance our understanding of the universe.',
+              },
             ].map((feature, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-xl transition-shadow"
+              >
                 <FontAwesomeIcon icon={feature.icon} className="h-12 w-12 text-blue-600 mb-4" />
                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
@@ -76,8 +85,8 @@ export default function Home() {
       </section>
 
       {/* Mission Statement */}
-      <ParallaxSection 
-        backgroundImage="/images/earth-from-space.jpg" 
+      <ParallaxSection
+        backgroundImage="/images/earth-from-space.jpg"
         height="60vh"
         overlayOpacity={0.7}
         speed={0.3}
@@ -85,11 +94,14 @@ export default function Home() {
         <div className="text-center text-white max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-6">Our Vision for the Future</h2>
           <p className="text-xl mb-8">
-            We believe in a future where humanity extends beyond Earth, exploring and understanding the cosmos. 
-            Our mission is to make space accessible, sustainable, and beneficial for all of humanity.
+            We believe in a future where humanity extends beyond Earth, exploring and understanding
+            the cosmos. Our mission is to make space accessible, sustainable, and beneficial for all
+            of humanity.
           </p>
           <Link href="/who-are-we">
-            <Button size="lg" variant="secondary">Learn About Our Team</Button>
+            <Button size="lg" variant="secondary">
+              Learn About Our Team
+            </Button>
           </Link>
         </div>
       </ParallaxSection>
@@ -98,30 +110,36 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">Latest Projects</h2>
-          
+
           <Grid cols={3} gap="md">
             {[
               {
-                title: 'Mars Exploration',
-                image: '/images/mars-rover.jpg',
-                description: 'Robotic missions to study the Red Plane&rsquo; geology and search for signs of past life.',
-                link: '/product/mars-exploration'
+                title: 'Detalle global',
+                image: '/images/NASA_ORNL_DAYMET_V4_sample.png',
+                description: 'Nuestro programa trabaja con datos en tiempo real.',
+                link: '/product/mars-exploration',
               },
               {
-                title: 'Lunar Base Alpha',
-                image: '/images/lunar-base.jpg',
-                description: 'Establishing a permanent human presence on the Moon as a stepping stone to Mars.',
-                link: '/product/lunar-base'
+                title: 'MAPS',
+                image: '/images/geojango-maps-Z8UgB80_46w-unsplash.jpg',
+                description: 'Estableciendo nuevos mapas',
+                link: '/product/lunar-base',
               },
               {
                 title: 'Asteroid Mining',
-                image: '/images/asteroid-mining.jpg',
-                description: 'Developing technologies to extract valuable resources from near-Earth asteroids.',
-                link: '/product/asteroid-mining'
-              }
+                image: '/images/geojango-maps-Z8UgB80_46w-unsplash.jpg',
+                description:
+                  'Developing technologies to extract valuable resources from near-Earth asteroids.',
+                link: '/product/asteroid-mining',
+              },
             ].map((project, index) => (
               <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-                <div className="h-48 bg-gray-300"></div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  style={{ objectFit: 'contain' }}
+                  className="w-full h-48 object-cover"
+                />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                   <p className="text-gray-600 mb-4">{project.description}</p>
@@ -140,10 +158,15 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Join the Mission?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Become part of our global community of space enthusiasts and contribute to the future of space exploration.
+            Become part of our global community of space enthusiasts and contribute to the future of
+            space exploration.
           </p>
           <Link href="/get-started">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white hover:text-blue-600"
+            >
               Get Started Today
             </Button>
           </Link>
