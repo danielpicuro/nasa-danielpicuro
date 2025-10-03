@@ -170,7 +170,7 @@ export default function GetStarted() {
                 <div>
                   <h3 className="text-xl font-bold mb-2">When is your next launch or public event?</h3>
                   <p>
-                    Check our Events calendar for upcoming launches, webinars, and public engagement 
+                    Check our Events calendar for upcoming launches and public engagement 
                     opportunities.
                   </p>
                 </div>
