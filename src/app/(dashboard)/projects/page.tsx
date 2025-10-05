@@ -1,49 +1,50 @@
-import { MapPin, Users, Droplet, TrendingUp, Search } from "lucide-react"
+import { MapPin, Users, Droplet, TrendingUp, Search } from 'lucide-react';
+import Link from 'next/link';
 
 // Definimos los parámetros para resolver el error de tipos
 export function generateStaticParams() {
-  return [{ projectId: "default" }];
+  return [{ projectId: 'default' }];
 }
 
 export default function ProjectsPage() {
   const projects = [
     {
       id: 1,
-      title: "Master Drainage Plan",
-      location: "Buenos Aires, Argentina",
-      status: "Active",
-      population: "3.1M",
-      type: "Water Infrastructure",
+      title: 'Master Drainage Plan',
+      location: 'Buenos Aires, Argentina',
+      status: 'Active',
+      population: '3.1M',
+      type: 'Water Infrastructure',
       digitalTwinReady: true,
     },
     {
       id: 2,
-      title: "Urban Green Corridor",
-      location: "Santiago, Chile",
-      status: "Planning",
-      population: "5.6M",
-      type: "Public Spaces",
+      title: 'Urban Green Corridor',
+      location: 'Santiago, Chile',
+      status: 'Planning',
+      population: '5.6M',
+      type: 'Public Spaces',
       digitalTwinReady: true,
     },
     {
       id: 3,
-      title: "Integrated BRT System",
-      location: "Bogotá, Colombia",
-      status: "Active",
-      population: "7.4M",
-      type: "Transportation",
+      title: 'Integrated BRT System',
+      location: 'Bogotá, Colombia',
+      status: 'Active',
+      population: '7.4M',
+      type: 'Transportation',
       digitalTwinReady: true,
     },
     {
       id: 4,
-      title: "Coastal Resilience",
-      location: "Lima, Peru",
-      status: "Planning",
-      population: "9.7M",
-      type: "Climate Adaptation",
+      title: 'Coastal Resilience',
+      location: 'Lima, Peru',
+      status: 'Planning',
+      population: '9.7M',
+      type: 'Climate Adaptation',
       digitalTwinReady: true,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-[oklch(0.12_0.01_250)] p-6 md:p-12">
@@ -66,7 +67,7 @@ export default function ProjectsPage() {
 
         {/* Projects Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => (
+          {projects.map(project => (
             <div
               key={project.id}
               className="group relative overflow-hidden rounded-xl border border-gray-800/50 bg-[oklch(0.14_0.01_250)] p-6 transition-all hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/10"
@@ -76,9 +77,9 @@ export default function ProjectsPage() {
                 <h2 className="text-2xl font-semibold text-cyan-400">{project.title}</h2>
                 <span
                   className={`rounded-md px-3 py-1 text-xs font-medium ${
-                    project.status === "Active"
-                      ? "bg-emerald-500/20 text-emerald-400"
-                      : "bg-orange-500/20 text-orange-400"
+                    project.status === 'Active'
+                      ? 'bg-emerald-500/20 text-emerald-400'
+                      : 'bg-orange-500/20 text-orange-400'
                   }`}
                 >
                   {project.status}
@@ -118,15 +119,18 @@ export default function ProjectsPage() {
                   <div className="h-2 w-2 rounded-full bg-cyan-400" />
                   <span className="text-sm text-gray-400">Digital Twin Ready</span>
                 </div>
-                <button className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-sm font-medium text-white transition-all hover:from-cyan-400 hover:to-blue-400 hover:shadow-lg hover:shadow-cyan-500/30">
+                <Link
+                  href={`/${encodeURIComponent(project.type)}/overview`}
+                  className="flex min-w-20 items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-md font-medium text-white transition-all hover:from-cyan-400 hover:to-blue-400 hover:shadow-lg hover:shadow-cyan-500/30"
+                >
                   <TrendingUp className="h-4 w-4" />
                   Open
-                </button>
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -13,7 +13,7 @@ async function handleProfileSubmit(formData: FormData) {
   console.log({ email, role, budget, priority })
 
   // Redirect to dashboard or next page
-  redirect("/dashboard")
+  redirect("/projects")
 }
 
 export default function LoginPage() {
