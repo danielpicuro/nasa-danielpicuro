@@ -8,7 +8,14 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "check-format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\""
+    "check-format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "prepare": "husky",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@google/genai": "^1.22.0",
@@ -36,6 +43,8 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "framer-motion": "^12.23.22",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "tailwindcss-animate": "^1.0.7",
