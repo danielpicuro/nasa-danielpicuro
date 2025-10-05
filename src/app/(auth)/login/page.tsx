@@ -1,19 +1,24 @@
-import { Globe, Mail, Shield } from "lucide-react"
-import { redirect } from "next/navigation"
+import { Globe, Mail, Shield } from 'lucide-react';
+import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+
+export const metadata: Metadata = {
+  title: 'Login',
+};
 
 async function handleProfileSubmit(formData: FormData) {
-  "use server"
+  'use server';
 
-  const email = formData.get("email")
-  const role = formData.get("role")
-  const budget = formData.get("budget")
-  const priority = formData.get("priority")
+  const email = formData.get('email');
+  const role = formData.get('role');
+  const budget = formData.get('budget');
+  const priority = formData.get('priority');
 
   // Here you would typically validate and save the data
-  console.log({ email, role, budget, priority })
+  console.log({ email, role, budget, priority });
 
   // Redirect to dashboard or next page
-  redirect("/projects")
+  redirect('/projects');
 }
 
 export default function LoginPage() {
@@ -30,7 +35,9 @@ export default function LoginPage() {
         {/* Title and Subtitle */}
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-cyan-400 mb-2">Government Profile</h1>
-          <p className="text-muted-foreground text-base">Configure your profile for personalized recommendations</p>
+          <p className="text-muted-foreground text-base">
+            Configure your profile for personalized recommendations
+          </p>
         </div>
 
         {/* Form */}
@@ -65,9 +72,9 @@ export default function LoginPage() {
               className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 0.75rem center",
-                backgroundSize: "1.25rem",
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 0.75rem center',
+                backgroundSize: '1.25rem',
               }}
             >
               <option value="technical">Technical (Engineer/Architect)</option>
@@ -89,9 +96,9 @@ export default function LoginPage() {
               className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 0.75rem center",
-                backgroundSize: "1.25rem",
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 0.75rem center',
+                backgroundSize: '1.25rem',
               }}
             >
               <option value="moderate">Moderate ($10M - $50M USD)</option>
@@ -113,9 +120,9 @@ export default function LoginPage() {
               className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
               style={{
                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right 0.75rem center",
-                backgroundSize: "1.25rem",
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'right 0.75rem center',
+                backgroundSize: '1.25rem',
               }}
             >
               <option value="environmental">Environmental Impact</option>
@@ -142,5 +149,5 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
-  )
+  );
 }
