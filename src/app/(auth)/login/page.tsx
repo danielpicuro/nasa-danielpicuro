@@ -1,153 +1,146 @@
-// src/app/government-profile/page.tsx
-import { Mail, Shield } from "lucide-react";
+import { Globe, Mail, Shield } from "lucide-react"
+import { redirect } from "next/navigation"
 
-const roles = [
-  "Technical (Engineer/Architect)",
-  "Administrative (Manager/Director)",
-  "Executive (C-Level)",
-  "Policy Maker",
-  "Analyst",
-];
+async function handleProfileSubmit(formData: FormData) {
+  "use server"
 
-const budgets = [
-  "Small (<$10M USD)",
-  "Moderate ($10M - $50M USD)",
-  "Large ($50M - $200M USD)",
-  "Enterprise (>$200M USD)",
-];
+  const email = formData.get("email")
+  const role = formData.get("role")
+  const budget = formData.get("budget")
+  const priority = formData.get("priority")
 
-const priorities = [
-  "Environmental Impact",
-  "Economic Growth",
-  "Public Safety",
-  "Infrastructure Development",
-  "Healthcare Services",
-  "Education",
-];
+  // Here you would typically validate and save the data
+  console.log({ email, role, budget, priority })
 
-// --- Server Action ---
-async function handleSubmit(formData: FormData) {
-  "use server";
-
-  const email = formData.get("email");
-  const role = formData.get("role");
-  const budget = formData.get("budget");
-  const priority = formData.get("priority");
-
-  console.log("[SERVER] Government profile submitted:", {
-    email,
-    role,
-    budget,
-    priority,
-  });
-
-  // Aquí podrías hacer:
-  // await saveToDB({ email, role, budget, priority });
+  // Redirect to dashboard or next page
+  redirect("/dashboard")
 }
 
-export default function GovernmentProfilePage() {
+export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden text-foreground">
-      {/* Fondos decorativos */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative w-full max-w-md">
-        <form
-          action={handleSubmit}
-          className="bg-card/80 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-border/50"
-        >
-          {/* Logo */}
-          <div className="flex justify-center mb-6">
-            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-              <Shield className="w-14 h-14 text-white" />
-            </div>
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <div className="w-full max-w-xl">
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-600 to-cyan-700 flex items-center justify-center shadow-lg">
+            <Globe className="w-12 h-12 text-cyan-300" strokeWidth={1.5} />
           </div>
+        </div>
 
-          <h1 className="text-3xl font-bold text-center text-cyan-400 mb-2">
-            Government Profile
-          </h1>
-          <p className="text-center text-muted-foreground text-sm mb-8">
-            Configure your profile for personalized recommendations
-          </p>
+        {/* Title and Subtitle */}
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold text-cyan-400 mb-2">Government Profile</h1>
+          <p className="text-muted-foreground text-base">Configure your profile for personalized recommendations</p>
+        </div>
 
-          {/* Email */}
-          <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-foreground mb-2"
-            >
+        {/* Form */}
+        <form action={handleProfileSubmit} className="space-y-6">
+          {/* Email Address */}
+          <div className="space-y-2">
+            <label htmlFor="email" className="block text-sm font-medium text-muted-foreground">
               Email Address
             </label>
             <div className="relative">
               <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
+                type="email"
                 id="email"
                 name="email"
-                type="email"
-                required
                 placeholder="gobierno@ciudad.gob"
-                className="w-full bg-muted/50 border border-border rounded-lg pl-11 pr-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+                required
+                className="w-full pl-11 pr-4 py-3 bg-card border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
               />
             </div>
           </div>
 
           {/* Role */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-foreground mb-2">
+          <div className="space-y-2">
+            <label htmlFor="role" className="block text-sm font-medium text-muted-foreground">
               Role
             </label>
             <select
+              id="role"
               name="role"
-              className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+              required
+              className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 0.75rem center",
+                backgroundSize: "1.25rem",
+              }}
             >
-              {roles.map((r) => (
-                <option key={r}>{r}</option>
-              ))}
+              <option value="technical">Technical (Engineer/Architect)</option>
+              <option value="administrative">Administrative</option>
+              <option value="executive">Executive</option>
+              <option value="planning">Urban Planning</option>
             </select>
           </div>
 
-          {/* Budget */}
-          <div className="mb-6">
-            <label className="block text-sm font-medium text-foreground mb-2">
+          {/* Available Budget */}
+          <div className="space-y-2">
+            <label htmlFor="budget" className="block text-sm font-medium text-muted-foreground">
               Available Budget
             </label>
             <select
+              id="budget"
               name="budget"
-              className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+              required
+              className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 0.75rem center",
+                backgroundSize: "1.25rem",
+              }}
             >
-              {budgets.map((b) => (
-                <option key={b}>{b}</option>
-              ))}
+              <option value="moderate">Moderate ($10M - $50M USD)</option>
+              <option value="low">Low (Under $10M USD)</option>
+              <option value="high">High ($50M - $100M USD)</option>
+              <option value="very-high">Very High (Over $100M USD)</option>
             </select>
           </div>
 
-          {/* Priority */}
-          <div className="mb-8">
-            <label className="block text-sm font-medium text-foreground mb-2">
+          {/* Main Priority */}
+          <div className="space-y-2">
+            <label htmlFor="priority" className="block text-sm font-medium text-muted-foreground">
               Main Priority
             </label>
             <select
+              id="priority"
               name="priority"
-              className="w-full bg-muted/50 border border-border rounded-lg px-4 py-3 text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all"
+              required
+              className="w-full px-4 py-3 bg-card border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all appearance-none cursor-pointer"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 0.75rem center",
+                backgroundSize: "1.25rem",
+              }}
             >
-              {priorities.map((p) => (
-                <option key={p}>{p}</option>
-              ))}
+              <option value="environmental">Environmental Impact</option>
+              <option value="economic">Economic Development</option>
+              <option value="social">Social Welfare</option>
+              <option value="infrastructure">Infrastructure</option>
+              <option value="safety">Public Safety</option>
             </select>
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-6 rounded-lg shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all duration-200 flex items-center justify-center gap-2"
+            className="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30"
           >
             <Shield className="w-5 h-5" />
             Access Platform
           </button>
         </form>
+
+        {/* Footer */}
+        <p className="text-center text-sm text-muted-foreground mt-8">
+          Secure connection • Enterprise-grade encryption
+        </p>
       </div>
     </div>
-  );
+  )
 }
