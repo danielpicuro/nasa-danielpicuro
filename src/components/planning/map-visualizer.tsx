@@ -23,7 +23,7 @@ export function MapVisualizer() {
       {/* Map Background - Using the city image */}
       <div className="absolute inset-0">
         <Image
-          src="/street-view.png"
+          src="/images/street-view.png"
           alt="3D City View"
           width={1920}
           height={1280}
