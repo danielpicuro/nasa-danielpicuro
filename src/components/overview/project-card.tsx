@@ -25,8 +25,7 @@ export function ProjectCard({
   const router = useRouter();
 
   const handleOpen = () => {
-    // Navigate to project detail page (to be created later)
-    router.push(`/projects/${title.toLowerCase().replace(/\s+/g, '-')}`);
+    router.push(`/ai-lab`);
   };
 
   return (

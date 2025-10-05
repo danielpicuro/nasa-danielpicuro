@@ -4,8 +4,7 @@ import { MapPin } from 'lucide-react';
 
 export function NewProjectCard() {
   const handleRequestProject = () => {
-    // Placeholder for future functionality
-    alert('Request new project functionality coming soon!');
+    alert('Aguanta, pronto estrá listo');
   };
 
   return (
