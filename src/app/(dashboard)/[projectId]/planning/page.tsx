@@ -1,44 +1,70 @@
+import { DirectoryPanel } from '@/components/planning/directory-panel';
+import { MapVisualizer } from '@/components/planning/map-visualizer';
+import { HeaderControls } from '@/components/planning/header-controls';
+import { AIChat } from '@/components/ai-chat';
 import { Metadata } from 'next';
-// Este es un Server Component 
-import { GoogleGenAI } from "@google/genai";
 
 export const metadata: Metadata = {
   title: 'Planning',
 };
 
-export default async function PlanningPage({ params }: { params: { projectId: string } }) {
+// Server Component - fetches initial data and renders layout
+export default async function PlanningPage() {
+  // Simulate fetching initial data (this would come from a database/API)
+  const directoryData = {
+    gis: [
+      { id: 'bld-img', name: 'Bld Img Image', type: 'image', checked: true },
+      { id: 'bld-buildings', name: 'Bld Buildings', type: 'building', checked: true },
+      { id: 'land-use', name: 'Land Use in Bld Img', type: 'area', checked: false },
+      { id: 'green-areas', name: 'Green Areas in Bld Img', type: 'area', checked: false },
+    ],
+    gcip: [
+      { id: 'bld-img-gcip', name: 'Bld Img Image', type: 'image', checked: false },
+      { id: 'networks', name: 'Networks', type: 'network', checked: true },
+    ],
+    assets: [
+      {
+        id: 'collector-a12',
+        name: 'Colector Principal A-12',
+        category: 'Pipeline',
+        status: 'active',
+      },
+      {
+        id: 'estacion-eb03',
+        name: 'Estación de Bombeo EB-03',
+        category: 'Facility',
+        status: 'construction',
+      },
+      {
+        id: 'cuenca-norte',
+        name: 'Cuenca de Retención Norte',
+        category: 'Storage',
+        status: 'planned',
+      },
+    ],
+  };
+
+  const weatherData = {
+    currentTime: '18:19',
+    isRealTime: true,
+  };
+
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Planificación Urbana</h1>
-      
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-lg font-medium mb-4">Herramientas de Planificación</h2>
-        <p className="text-gray-600">
-          Utiliza nuestras herramientas avanzadas de planificación urbana potenciadas por IA para optimizar el desarrollo de tu ciudad.
-        </p>
-        
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border p-4 rounded-md">
-            <h3 className="font-medium">Simulación de Tráfico</h3>
-            <p className="text-sm text-gray-500">Analiza y optimiza los flujos de tráfico en tu ciudad</p>
-          </div>
-          
-          <div className="border p-4 rounded-md">
-            <h3 className="font-medium">Planificación de Zonas Verdes</h3>
-            <p className="text-sm text-gray-500">Maximiza el impacto ambiental positivo</p>
-          </div>
-          
-          <div className="border p-4 rounded-md">
-            <h3 className="font-medium">Gestión de Recursos Hídricos</h3>
-            <p className="text-sm text-gray-500">Optimiza el uso del agua en entornos urbanos</p>
-          </div>
-          
-          <div className="border p-4 rounded-md">
-            <h3 className="font-medium">Desarrollo Sostenible</h3>
-            <p className="text-sm text-gray-500">Planifica el crecimiento urbano sostenible</p>
-          </div>
-        </div>
+    <div className="relative h-screen w-full overflow-hidden bg-background">
+      {/* Header Controls */}
+      <HeaderControls initialTime={weatherData.currentTime} isRealTime={weatherData.isRealTime} />
+
+      {/* Main Content Area */}
+      <div className="flex h-[calc(100vh-4rem)]">
+        {/* Left Sidebar - Directory Panel */}
+        <DirectoryPanel data={directoryData} />
+
+        {/* Main Map Visualizer */}
+        <MapVisualizer />
       </div>
+
+      {/* AI Chat Component */}
+      <AIChat />
     </div>
   );
 }
