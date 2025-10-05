@@ -11,10 +11,10 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | City Twin LATAM',
-    default: 'City Twin LATAM',
+    template: '%s | Digital Twin',
+    default: 'Digital Twin',
   },
-  description: 'Transform your city with our cutting-edge digital twin technology',
+  description: 'A project from AmaruPAt',
   metadataBase: new URL('https://with-trae-nasa.vercel.app/'),
 };
 

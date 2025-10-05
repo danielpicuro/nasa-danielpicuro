@@ -1,6 +1,11 @@
 import { PlanningNavbar } from '@/components/planning/planning-navbar';
 import { PlanningTabs } from '@/components/planning/planning-tabs';
 import { PlanningMetrics } from '@/components/planning/planning-metrics';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Planning',
+};
 
 export default function PlanningPage() {
   return (

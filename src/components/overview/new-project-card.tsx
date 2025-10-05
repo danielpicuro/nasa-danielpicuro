@@ -24,7 +24,7 @@ export function NewProjectCard() {
           </p>
           <button
             onClick={handleRequestProject}
-            className="!bg-transparent !border-2 !border-purple-400 !text-purple-300 !px-6 !py-2 !rounded-lg !font-semibold !hover:bg-purple-500/20 !transition-all"
+            className="!bg-transparent !border-2 !border-purple-400 !text-purple-300 !px-6 !py-2 !rounded-lg !font-semibold hover:!bg-purple-500/20 !transition-all"
           >
             Request New Project
           </button>

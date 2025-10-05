@@ -1,4 +1,9 @@
 import { Box, RefreshCw, Triangle } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Live Sync',
+};
 import { BimCard } from '@/components/live-sync/bim-card';
 import { FeatureCard } from '@/components/live-sync/feature-card';
 import { FileUpload } from '@/components/live-sync/file-upload';

@@ -34,7 +34,7 @@ export default function HomePage() {
           {/* CTA Button */}
           <div
             onClick={() => router.push('/login')}
-            className="!w-30 !rounded-2xl !flex !flex-col !items-center !justify-center !relative !z-20 !bg-blue-600 !px-10 !py-3 !text-xl !font-bold !text-white !shadow-xl !hover:bg-blue-700 !hover:shadow-2xl !transition-all !cursor-pointer"
+            className="!w-30 !rounded-2xl !flex !flex-col !items-center !justify-center !relative !z-20 !bg-blue-600 !px-10 !py-3 !text-xl !font-bold !text-white !shadow-xl hover:!bg-blue-700 hover:!shadow-2xl !transition-all !cursor-pointer"
           >
             Empezar
           </div>

@@ -1,6 +1,11 @@
 import { SearchBar } from '@/components/overview/search-bar';
 import { NewProjectCard } from '@/components/overview/new-project-card';
 import { ProjectCard } from '@/components/overview/project-card';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Project Selected',
+};
 
 export default function ProjectsPage() {
   return (

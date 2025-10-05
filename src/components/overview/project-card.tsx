@@ -29,7 +29,7 @@ export function ProjectCard({
   };
 
   return (
-    <div className="!bg-slate-900/50 !border !border-cyan-500/30 !rounded-lg !overflow-hidden !hover:border-cyan-500/60 !transition-all">
+    <div className="!bg-slate-900/50 !border !border-cyan-500/30 !rounded-lg !overflow-hidden hover:!border-cyan-500/60 !transition-all">
       <div className="!p-6">
         {/* Project Header */}
         <div className="!mb-6">
@@ -56,7 +56,7 @@ export function ProjectCard({
         {/* Open Button */}
         <button
           onClick={handleOpen}
-          className="!w-full !bg-blue-600 !hover:bg-blue-700 !text-white !font-semibold !py-3 !rounded-lg !transition-all !mb-6"
+          className="!w-full !bg-blue-600 hover:!bg-blue-700 !text-white !font-semibold !py-3 !rounded-lg !transition-all !mb-6"
         >
           Open
         </button>

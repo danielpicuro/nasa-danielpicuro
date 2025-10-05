@@ -25,7 +25,7 @@ export function PlanningTabs() {
             ${
               activeTab === tab.id
                 ? '!bg-blue-600 !text-white'
-                : '!bg-slate-800/50 !text-white/70 !hover:bg-slate-700/50 !hover:text-white'
+                : '!bg-slate-800/50 !text-white/70 hover:!bg-slate-700/50 hover:!text-white'
             }
             ${tab.id === '!region' ? '!border-2 !border-blue-400' : ''}
           `}
