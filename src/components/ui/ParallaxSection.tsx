@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useEffect, useState } from 'react';
 
@@ -29,7 +29,7 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -40,26 +40,18 @@ const ParallaxSection: React.FC<ParallaxSectionProps> = ({
   const backgroundPositionY = `${yPos}px`;
 
   return (
-    <div 
-      className="relative flex items-center justify-center overflow-hidden"
-      style={{ height }}
-    >
-      <div 
+    <div className="relative flex items-center justify-center overflow-hidden" style={{ height }}>
+      <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ 
+        style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundPositionY,
           transform: `translateZ(0)`,
-          willChange: 'transform'
+          willChange: 'transform',
         }}
       />
-      <div 
-        className="absolute inset-0 bg-black"
-        style={{ opacity: overlayOpacity }}
-      />
-      <div className="relative z-10 container mx-auto px-4">
-        {children}
-      </div>
+      <div className="absolute inset-0 bg-black" style={{ opacity: overlayOpacity }} />
+      <div className="relative z-10 container mx-auto px-4">{children}</div>
     </div>
   );
 };

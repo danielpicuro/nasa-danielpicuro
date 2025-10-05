@@ -10,10 +10,11 @@ config.autoAddCss = false; // To skip adding CSS automatically
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
- title: {
+  title: {
     template: '%s | City Twin LATAM',
     default: 'City Twin LATAM',
-  },  description: 'Transform your city with our cutting-edge digital twin technology',
+  },
+  description: 'Transform your city with our cutting-edge digital twin technology',
   metadataBase: new URL('https://with-trae-nasa.vercel.app/'),
 };
 

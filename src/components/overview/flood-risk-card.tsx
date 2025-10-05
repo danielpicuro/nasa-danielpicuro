@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { Droplet } from "lucide-react"
+import { Droplet } from 'lucide-react';
 
 export function FloodRiskCard() {
   // Simulated data - replace with real data later
-  const riskLevel = "High"
-  const description = "T=50 years - 45% area"
-  const riskPercentage = 75
+  const riskLevel = 'High';
+  const description = 'T=50 years - 45% area';
+  const riskPercentage = 75;
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-cyan-900/30 bg-gradient-to-br from-cyan-950/50 to-cyan-900/30 p-6 backdrop-blur-sm">
@@ -35,5 +35,5 @@ export function FloodRiskCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

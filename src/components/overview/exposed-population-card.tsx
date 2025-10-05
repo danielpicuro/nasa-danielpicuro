@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { Users } from "lucide-react"
+import { Users } from 'lucide-react';
 
 export function ExposedPopulationCard() {
   // Simulated data - replace with real data later
-  const population = 284500
-  const description = "people in risk zone"
-  const change = "+12% vs last year"
+  const population = 284500;
+  const description = 'people in risk zone';
+  const change = '+12% vs last year';
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-orange-900/30 bg-gradient-to-br from-orange-950/50 to-orange-900/30 p-6 backdrop-blur-sm">
@@ -25,5 +25,5 @@ export function ExposedPopulationCard() {
         <p className="text-xs font-medium text-orange-500">{change}</p>
       </div>
     </div>
-  )
+  );
 }

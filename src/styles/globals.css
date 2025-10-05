@@ -1,8 +1,8 @@
 /* ---- Tailwind Core ---- */
 
 @plugin "tailwindcss-animate";
-@import "tailwindcss/preflight";
-@import "tailwindcss";
+@import 'tailwindcss/preflight';
+@import 'tailwindcss';
 @tailwind utilities;
 
 /* ---- Custom Variants ---- */

@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { DollarSign, CheckCircle } from "lucide-react"
+import { DollarSign, CheckCircle } from 'lucide-react';
 
 export function CapexCard() {
   // Simulated data - replace with real data later
-  const amount = 87.5
-  const description = "USD - total investment"
-  const status = "Within budget"
+  const amount = 87.5;
+  const description = 'USD - total investment';
+  const status = 'Within budget';
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-green-900/30 bg-gradient-to-br from-green-950/50 to-green-900/30 p-6 backdrop-blur-sm">
@@ -28,5 +28,5 @@ export function CapexCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

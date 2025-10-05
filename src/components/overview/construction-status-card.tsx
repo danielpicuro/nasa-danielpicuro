@@ -1,20 +1,20 @@
-"use client"
+'use client';
 
-import { CheckCircle, Clock, AlertTriangle } from "lucide-react"
+import { CheckCircle, Clock, AlertTriangle } from 'lucide-react';
 
 export function ConstructionStatusCard() {
   // Simulated data - replace with real data later
   const phases = [
-    { name: "Design", progress: 100, color: "cyan" },
-    { name: "Construction", progress: 34, color: "cyan" },
-    { name: "Supervision", progress: 45, color: "cyan" },
-  ]
+    { name: 'Design', progress: 100, color: 'cyan' },
+    { name: 'Construction', progress: 34, color: 'cyan' },
+    { name: 'Supervision', progress: 45, color: 'cyan' },
+  ];
 
   const milestones = {
     completed: 3,
     inProgress: 2,
     alerts: 1,
-  }
+  };
 
   return (
     <div className="rounded-xl border border-border bg-card p-6">
@@ -25,13 +25,17 @@ export function ConstructionStatusCard() {
 
       {/* Progress Bars */}
       <div className="mb-6 space-y-4">
-        {phases.map((phase) => (
+        {phases.map(phase => (
           <div key={phase.name} className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-foreground">{phase.name}</span>
               <span
                 className={`text-sm font-bold ${
-                  phase.progress === 100 ? "text-green-400" : phase.progress >= 40 ? "text-orange-400" : "text-cyan-400"
+                  phase.progress === 100
+                    ? 'text-green-400'
+                    : phase.progress >= 40
+                      ? 'text-orange-400'
+                      : 'text-cyan-400'
                 }`}
               >
                 {phase.progress}%
@@ -40,7 +44,11 @@ export function ConstructionStatusCard() {
             <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
               <div
                 className={`h-full ${
-                  phase.progress === 100 ? "bg-green-400" : phase.progress >= 40 ? "bg-orange-400" : "bg-cyan-400"
+                  phase.progress === 100
+                    ? 'bg-green-400'
+                    : phase.progress >= 40
+                      ? 'bg-orange-400'
+                      : 'bg-cyan-400'
                 }`}
                 style={{ width: `${phase.progress}%` }}
               />
@@ -65,5 +73,5 @@ export function ConstructionStatusCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

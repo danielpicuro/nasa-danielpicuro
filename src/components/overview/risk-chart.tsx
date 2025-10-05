@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 export function RiskChart() {
   // Placeholder component - you will implement this with recharts
@@ -11,8 +11,10 @@ export function RiskChart() {
 
       {/* Placeholder for your RiskChart component */}
       <div className="flex h-[300px] items-center justify-center rounded-lg border border-dashed border-border bg-muted/20">
-        <p className="text-sm text-muted-foreground">RiskChart component will be implemented here with recharts</p>
+        <p className="text-sm text-muted-foreground">
+          RiskChart component will be implemented here with recharts
+        </p>
       </div>
     </div>
-  )
+  );
 }

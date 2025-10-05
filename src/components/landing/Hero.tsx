@@ -1,19 +1,19 @@
-"use client"
+'use client';
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import { Globe } from "lucide-react"
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { Globe } from 'lucide-react';
 
 export default function LoadingScreen() {
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      router.push("/login")
-    }, 3000)
+      router.push('/login');
+    }, 3000);
 
-    return () => clearTimeout(timer)
-  }, [router])
+    return () => clearTimeout(timer);
+  }, [router]);
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden">
@@ -64,5 +64,5 @@ export default function LoadingScreen() {
         <p className="text-sm text-gray-500 pt-4">Powered by 51WORLD Technology</p>
       </div>
     </div>
-  )
+  );
 }

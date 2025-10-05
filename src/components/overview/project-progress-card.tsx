@@ -1,12 +1,12 @@
-"use client"
+'use client';
 
-import { BarChart3 } from "lucide-react"
+import { BarChart3 } from 'lucide-react';
 
 export function ProjectProgressCard() {
   // Simulated data - replace with real data later
-  const percentage = 34
-  const completed = 8
-  const total = 23
+  const percentage = 34;
+  const completed = 8;
+  const total = 23;
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-purple-900/30 bg-gradient-to-br from-purple-950/50 to-purple-900/30 p-6 backdrop-blur-sm">
@@ -31,5 +31,5 @@ export function ProjectProgressCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }

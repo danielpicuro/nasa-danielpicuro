@@ -1,5 +1,5 @@
-import type React from "react"
-import Link from "next/link"
+import type React from 'react';
+import Link from 'next/link';
 import {
   Globe,
   LayoutDashboard,
@@ -12,28 +12,28 @@ import {
   FileText,
   Bell,
   Settings,
-} from "lucide-react"
+} from 'lucide-react';
 
 export default async function ProjectsLayout({
   children,
   params,
 }: {
-  children: React.ReactNode
-  params: Promise<{ projectId?: string }>
+  children: React.ReactNode;
+  params: Promise<{ projectId?: string }>;
 }) {
-  const resolvedParams = await params
-  const projectId = resolvedParams?.projectId || "default"
+  const resolvedParams = await params;
+  const projectId = resolvedParams?.projectId || 'default';
 
   const navItems = [
-    { href: `/${projectId}/overview`, label: "Overview", icon: LayoutDashboard },
-    { href: `/${projectId}/planning`, label: "Planning", icon: Calendar },
-    { href: `/${projectId}/resources`, label: "Resources", icon: FolderKanban },
-    { href: `/${projectId}/analysis`, label: "Analysis", icon: BarChart3 },
-    { href: `/${projectId}/3d-twin`, label: "3D Twin", icon: Box },
-    { href: `/${projectId}/ai-lab`, label: "AI Lab", icon: Sparkles },
-    { href: `/${projectId}/data`, label: "Data", icon: Database },
-    { href: `/${projectId}/reports`, label: "Reports", icon: FileText },
-  ]
+    { href: `/${projectId}/overview`, label: 'Overview', icon: LayoutDashboard },
+    { href: `/${projectId}/planning`, label: 'Planning', icon: Calendar },
+    { href: `/${projectId}/resources`, label: 'Resources', icon: FolderKanban },
+    { href: `/${projectId}/analysis`, label: 'Analysis', icon: BarChart3 },
+    { href: `/${projectId}/3d-twin`, label: '3D Twin', icon: Box },
+    { href: `/${projectId}/ai-lab`, label: 'AI Lab', icon: Sparkles },
+    { href: `/${projectId}/data`, label: 'Data', icon: Database },
+    { href: `/${projectId}/reports`, label: 'Reports', icon: FileText },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -53,8 +53,8 @@ export default async function ProjectsLayout({
 
           {/* Navigation Items - Desktop */}
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center px-4">
-            {navItems.map((item) => {
-              const Icon = item.icon
+            {navItems.map(item => {
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
@@ -64,7 +64,7 @@ export default async function ProjectsLayout({
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </Link>
-              )
+              );
             })}
           </div>
 
@@ -94,8 +94,8 @@ export default async function ProjectsLayout({
         {/* Mobile Navigation */}
         <div className="lg:hidden overflow-x-auto border-t border-border/40">
           <div className="flex items-center gap-1 px-4 py-2 min-w-max">
-            {navItems.map((item) => {
-              const Icon = item.icon
+            {navItems.map(item => {
+              const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
@@ -105,7 +105,7 @@ export default async function ProjectsLayout({
                   <Icon className="w-3.5 h-3.5" />
                   <span>{item.label}</span>
                 </Link>
-              )
+              );
             })}
           </div>
         </div>
@@ -114,5 +114,5 @@ export default async function ProjectsLayout({
       {/* Main Content */}
       <main className="flex-1">{children}</main>
     </div>
-  )
+  );
 }

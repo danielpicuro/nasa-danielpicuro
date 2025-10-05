@@ -1,7 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook, faRocket, faMap, faUserAstronaut, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBook,
+  faRocket,
+  faMap,
+  faUserAstronaut,
+  faQuestionCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 /**
  * Componente Sidebar: Barra lateral para navegación en secciones específicas
@@ -25,7 +31,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeSection = 'introduction' }) => 
       <h3 className="text-lg font-bold mb-6 text-gray-800">Documentation</h3>
       <nav>
         <ul className="space-y-2">
-          {sections.map((section) => (
+          {sections.map(section => (
             <li key={section.id}>
               <Link
                 href={`#${section.id}`}
