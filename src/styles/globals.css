@@ -1,4 +1,6 @@
 /* ---- Tailwind Core ---- */
+
+@plugin "tailwindcss-animate";
 @import "tailwindcss/preflight";
 @import "tailwindcss";
 @tailwind utilities;
@@ -46,6 +48,11 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-input: var(--input);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 }
 
 /* ---- Base Theme (Light) ---- */
@@ -53,8 +60,6 @@
   --radius: 0.625rem;
 
   /* Neutral base */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
   --border: oklch(0.92 0.004 286.32);
   --ring: oklch(0.705 0.015 286.067);
 
@@ -85,6 +90,13 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --input: oklch(0.92 0.004 286.32);
 }
 
 /* ---- Dark Theme ---- */
@@ -114,6 +126,14 @@
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --input: oklch(1 0 0 / 15%);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
 /* ---- Base layer ---- */
