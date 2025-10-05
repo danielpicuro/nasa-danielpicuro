@@ -1,40 +1,18 @@
-import { SearchBar } from '@/components/overview/search-bar';
-import { NewProjectCard } from '@/components/overview/new-project-card';
-import { ProjectCard } from '@/components/overview/project-card';
+import { ProjectCarousel } from '@/components/projects/project-carousel';
 
 export default function ProjectsPage() {
   return (
-    <div className="!min-h-screen !bg-gradient-to-br !from-teal-900 !via-slate-900 !to-purple-900 p-8">
-      <div className="!mx-auto !max-w-7xl">
+    <div className="!min-h-screen !bg-gradient-to-br !from-slate-950 !via-slate-900 !to-purple-950 !relative !overflow-hidden">
+      <div className="!absolute !inset-0 !bg-gradient-to-b !from-cyan-500/5 !via-transparent !to-purple-500/10" />
+
+      <div className="!relative !z-10 !flex !flex-col !items-center !justify-center !min-h-screen !py-16">
         {/* Header */}
-        <div className="!mb-8">
-          <h1 className="!text-5xl !font-bold !text-white !mb-2">SELECT PROJECT</h1>
-          <p className="!text-gray-300 !text-lg">Choose a city and project to begin</p>
+        <div className="!text-center !mb-16">
+          <h1 className="!text-6xl !font-bold !text-white !mb-3 !tracking-tight">SELECT PROJECT</h1>
+          <p className="!text-cyan-400 !text-xl">Choose a city and project to begin</p>
         </div>
 
-        {/* Search Bar */}
-        <SearchBar />
-
-        {/* New Project Card */}
-        <NewProjectCard />
-
-        {/* Projects Grid */}
-        <div className="!grid !grid-cols-1 !lg:grid-cols-2 !gap-6 !mt-8">
-          <ProjectCard
-            title="COASTAL RESILIENCE"
-            location="Lima, Peru"
-            population="9.7M"
-            type="Climate Adaptation"
-            status="Digital twin ready"
-            image1="/images/plants.jpg"
-            image2="/images/street-up.jpg"
-          />
-
-          {/* Placeholder for more projects */}
-          <div className="!bg-slate-800/30 !rounded-lg !border !border-cyan-500/30 !min-h-[400px] !flex !items-center !justify-center">
-            <p className="!text-gray-500">More projects coming soon...</p>
-          </div>
-        </div>
+        <ProjectCarousel />
       </div>
     </div>
   );
