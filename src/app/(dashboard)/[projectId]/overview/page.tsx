@@ -4,6 +4,11 @@ import { CapexCard } from "@/components/dashboard/capex-card"
 import { ProjectProgressCard } from "@/components/dashboard/project-progress-card"
 import { RiskChart } from "@/components/dashboard/risk-chart"
 import { ConstructionStatusCard } from "@/components/dashboard/construction-status-card"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Overview',
+};
 
 export default function ProjectsPage() {
   return (

@@ -1,5 +1,10 @@
+import { Metadata } from 'next';
 // Este es un Server Component 
 import { GoogleGenAI } from "@google/genai";
+
+export const metadata: Metadata = {
+  title: 'Planning',
+};
 
 export default async function PlanningPage({ params }: { params: { projectId: string } }) {
   return (

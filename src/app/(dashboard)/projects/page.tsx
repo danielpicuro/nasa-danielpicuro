@@ -1,7 +1,11 @@
 import { MapPin, Users, Droplet, TrendingUp, Search } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 
-// Definimos los parámetros para resolver el error de tipos
+export const metadata: Metadata = {
+  title: 'Projects',
+};
+
 export function generateStaticParams() {
   return [{ projectId: 'default' }];
 }
