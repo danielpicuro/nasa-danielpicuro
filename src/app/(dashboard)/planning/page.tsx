@@ -1,70 +1,33 @@
-import { DirectoryPanel } from '@/components/planning/directory-panel';
-import { MapVisualizer } from '@/components/planning/map-visualizer';
-import { HeaderControls } from '@/components/planning/header-controls';
-import { AIChat } from '@/components/ai-chat';
-import { Metadata } from 'next';
+import { PlanningNavbar } from '@/components/planning/planning-navbar';
+import { PlanningTabs } from '@/components/planning/planning-tabs';
+import { PlanningMetrics } from '@/components/planning/planning-metrics';
 
-export const metadata: Metadata = {
-  title: 'Planning',
-};
-
-// Server Component - fetches initial data and renders layout
-export default async function PlanningPage() {
-  // Simulate fetching initial data (this would come from a database/API)
-  const directoryData = {
-    gis: [
-      { id: 'bld-img', name: 'Bld Img Image', type: 'image', checked: true },
-      { id: 'bld-buildings', name: 'Bld Buildings', type: 'building', checked: true },
-      { id: 'land-use', name: 'Land Use in Bld Img', type: 'area', checked: false },
-      { id: 'green-areas', name: 'Green Areas in Bld Img', type: 'area', checked: false },
-    ],
-    gcip: [
-      { id: 'bld-img-gcip', name: 'Bld Img Image', type: 'image', checked: false },
-      { id: 'networks', name: 'Networks', type: 'network', checked: true },
-    ],
-    assets: [
-      {
-        id: 'collector-a12',
-        name: 'Colector Principal A-12',
-        category: 'Pipeline',
-        status: 'active',
-      },
-      {
-        id: 'estacion-eb03',
-        name: 'Estación de Bombeo EB-03',
-        category: 'Facility',
-        status: 'construction',
-      },
-      {
-        id: 'cuenca-norte',
-        name: 'Cuenca de Retención Norte',
-        category: 'Storage',
-        status: 'planned',
-      },
-    ],
-  };
-
-  const weatherData = {
-    currentTime: '18:19',
-    isRealTime: true,
-  };
-
+export default function PlanningPage() {
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-background">
-      {/* Header Controls */}
-      <HeaderControls initialTime={weatherData.currentTime} isRealTime={weatherData.isRealTime} />
+    <div className="!min-h-screen !bg-[url('/images/bolivie.jpg')] !bg-cover !bg-center !relative">
+      {/* Dark overlay for better text visibility */}
+      <div className="!absolute !inset-0 !bg-black/40"></div>
 
-      {/* Main Content Area */}
-      <div className="flex h-[calc(100vh-4rem)]">
-        {/* Left Sidebar - Directory Panel */}
-        <DirectoryPanel data={directoryData} />
+      {/* Content */}
+      <div className="!relative !z-10">
+        {/* Top Navbar */}
+        <PlanningNavbar />
 
-        {/* Main Map Visualizer */}
-        <MapVisualizer />
+        {/* Secondary Navigation with Tabs and Metrics */}
+        <div className="!px-6 !py-4">
+          <div className="!flex !items-center !justify-between !gap-4 !flex-wrap">
+            <PlanningTabs />
+            <PlanningMetrics />
+          </div>
+        </div>
+
+        {/* Suburb Label */}
+        <div className="!absolute !bottom-8 !left-8">
+          <div className="!bg-black/50 !backdrop-blur-sm !px-4 !py-2 !rounded-md !border !border-white/20">
+            <p className="!text-white !text-sm !font-medium">Suburb 2</p>
+          </div>
+        </div>
       </div>
-
-      {/* AI Chat Component */}
-      <AIChat />
     </div>
   );
 }
