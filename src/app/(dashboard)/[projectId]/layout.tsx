@@ -1,18 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 
-export default function ProjectLayout({
+export default async function ProjectLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { projectId: string };
+  params: Promise<{ projectId: string }>;
 }) {
-  const projectId = params.projectId;
-  
+  const projectId = (await params).projectId;
+
   const navItems = [
     { href: `/${projectId}/overview`, label: 'Visión General' },
-    { href: `//${projectId}/planning`, label: 'Planificación' },
+    { href: `/${projectId}/planning`, label: 'Planificación' },
     { href: `/${projectId}/ai-lab`, label: 'Laboratorio IA' },
     { href: `/${projectId}/resources`, label: 'Recursos' },
     { href: `/${projectId}/analysis`, label: 'Análisis' },
@@ -26,9 +26,9 @@ export default function ProjectLayout({
       <div className="bg-white shadow">
         <div className="container mx-auto px-4">
           <nav className="flex space-x-4 py-4 overflow-x-auto">
-            {navItems.map((item) => (
-              <Link 
-                key={item.href} 
+            {navItems.map(item => (
+              <Link
+                key={item.href}
                 href={item.href}
                 className="px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100"
               >
@@ -38,9 +38,7 @@ export default function ProjectLayout({
           </nav>
         </div>
       </div>
-      <div className="flex-1 p-4">
-        {children}
-      </div>
+      <div className="flex-1 p-4">{children}</div>
     </div>
   );
 }

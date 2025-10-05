@@ -1,5 +1,10 @@
 import { MapPin, Users, Droplet, TrendingUp, Search } from "lucide-react"
 
+// Definimos los parámetros para resolver el error de tipos
+export function generateStaticParams() {
+  return [{ projectId: "default" }];
+}
+
 export default function ProjectsPage() {
   const projects = [
     {
