@@ -1,0 +1,13 @@
+@plugin "tailwindcss-animate";
+@import 'tailwindcss/preflight';
+@import 'tailwindcss';
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+  }
+  body {
+  }
+}
