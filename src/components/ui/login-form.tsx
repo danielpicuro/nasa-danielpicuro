@@ -1,7 +1,7 @@
 'use client';
 
 import type React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FormInput } from '@/components/ui/form-input';
 import { FormButton } from '@/components/ui/form-button';
@@ -10,15 +10,10 @@ export function LoginForm() {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
-    role: 'Engineer',
-    budget: '$1000',
-    priority: 'Main priority',
+    role: '',
+    budget: '',
+    priority: '',
   });
-
-  // 🪄 Autorrellenar el email automáticamente
-  useEffect(() => {
-    setFormData(prev => ({ ...prev, email: 'user@example.com' })); // puedes cambiarlo por un valor dinámico
-  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -41,6 +36,7 @@ export function LoginForm() {
 
       <form onSubmit={handleSubmit} className="!space-y-6">
         <FormInput
+          id="email"
           label="Email Address"
           type="email"
           value={formData.email}
@@ -49,6 +45,7 @@ export function LoginForm() {
         />
 
         <FormInput
+          id="role"
           label="Role"
           type="text"
           value={formData.role}
@@ -57,14 +54,16 @@ export function LoginForm() {
         />
 
         <FormInput
+          id="budget"
           label="Available Budget"
-          type="text"
+          type="number"
           value={formData.budget}
           onChange={value => handleInputChange('budget', value)}
           required
         />
 
         <FormInput
+          id="priority"
           label="Main Priority"
           type="text"
           value={formData.priority}
