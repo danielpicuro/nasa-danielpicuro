@@ -2,6 +2,8 @@
 
 import { RadioOptionWithIcon } from '@/components/ai-lab/radio-option-with-icon';
 import { Cloud, Server } from 'lucide-react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 interface InfrastructureStepProps {
   selectedInfrastructure: string;
@@ -12,12 +14,15 @@ export function InfrastructureStep({
   selectedInfrastructure,
   onSelectInfrastructure,
 }: InfrastructureStepProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].aiLab.infrastructureStep;
+
   return (
     <div className="!space-y-6">
       {/* Step title */}
       <div className="!mb-8">
-        <h2 className="!text-3xl !font-bold !text-white !mb-2">3. INFRASTRUCTURE</h2>
-        <p className="!text-gray-400">Deployment and support preference</p>
+        <h2 className="!text-3xl !font-bold !text-white !mb-2">{t.title}</h2>
+        <p className="!text-gray-400">{t.subtitle}</p>
       </div>
 
       {/* Options */}
@@ -27,8 +32,8 @@ export function InfrastructureStep({
           selected={selectedInfrastructure === 'cloud'}
           onSelect={onSelectInfrastructure}
           icon={<Cloud className="!w-12 !h-12" />}
-          title="Nube (Cloud)"
-          description="Scalable, no hardware investment, remote access"
+          title={t.cloud}
+          description={t.cloudDescription}
         />
 
         <RadioOptionWithIcon
@@ -36,8 +41,8 @@ export function InfrastructureStep({
           selected={selectedInfrastructure === 'on-premise'}
           onSelect={onSelectInfrastructure}
           icon={<Server className="!w-12 !h-12" />}
-          title="On-premise"
-          description="Total control, local data, no internet dependency"
+          title={t.onPremise}
+          description={t.onPremiseDescription}
         />
       </div>
     </div>

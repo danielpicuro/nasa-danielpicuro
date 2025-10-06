@@ -1,19 +1,23 @@
 'use client';
 
 import type React from 'react';
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FormInput } from '@/components/ui/form-input';
 import { FormButton } from '@/components/ui/form-button';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function LoginForm() {
   const router = useRouter();
+  const { language } = useAiCompanion();
+  const t = translations[language].login.loginForm;
+
   const [formData, setFormData] = useState({
     email: '',
-    role: 'Engineer',
-    budget: '$1000',
-    priority: 'Main priority',
+    role: '',
+    budget: '',
+    priority: '',
   });
 
   const handleInputChange = (field: string, value: string) => {
@@ -27,17 +31,18 @@ export function LoginForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid()) {
-      router.push('/projects');
+      router.push('/projects'); // 🚀 redirección directa
     }
   };
 
   return (
     <div className="!w-full !rounded-lg !border !border-white/20 !bg-black/40 !p-8 !flex !flex-col !justify-around !items-center">
-      <h1 className="mb-8 !text-3xl font-bold text-white">LOGIN</h1>
+      <h1 className="!mb-8 !text-3xl !font-bold !text-white">{t.title}</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="!space-y-6">
         <FormInput
-          label="Email Address"
+          id="email"
+          label={t.emailAddress}
           type="email"
           value={formData.email}
           onChange={value => handleInputChange('email', value)}
@@ -45,7 +50,8 @@ export function LoginForm() {
         />
 
         <FormInput
-          label="Role"
+          id="role"
+          label={t.role}
           type="text"
           value={formData.role}
           onChange={value => handleInputChange('role', value)}
@@ -53,15 +59,17 @@ export function LoginForm() {
         />
 
         <FormInput
-          label="Available Budget"
-          type="text"
+          id="budget"
+          label={t.availableBudget}
+          type="number"
           value={formData.budget}
           onChange={value => handleInputChange('budget', value)}
           required
         />
 
         <FormInput
-          label="Main Priority"
+          id="priority"
+          label={t.mainPriority}
           type="text"
           value={formData.priority}
           onChange={value => handleInputChange('priority', value)}
@@ -69,7 +77,7 @@ export function LoginForm() {
         />
 
         <FormButton disabled={!isFormValid()} type="submit">
-          Access Platform
+          {t.accessPlatform}
         </FormButton>
       </form>
     </div>

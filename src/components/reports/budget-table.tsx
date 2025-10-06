@@ -1,4 +1,8 @@
+'use client';
+
 import { cn } from '@/lib/utils';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export interface BudgetItem {
   code: string;
@@ -17,6 +21,9 @@ interface BudgetTableProps {
 }
 
 export function BudgetTable({ title, subtitle, items, className }: BudgetTableProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].reports.budgetTable;
+
   const total = items.reduce((sum, item) => sum + item.subtotal, 0);
 
   const formatCurrency = (value: number) => {
@@ -46,17 +53,21 @@ export function BudgetTable({ title, subtitle, items, className }: BudgetTablePr
           <table className="!w-full">
             <thead>
               <tr className="!border-b !border-white/10">
-                <th className="!pb-3 !text-left !text-sm !font-medium !text-white/70">Code</th>
+                <th className="!pb-3 !text-left !text-sm !font-medium !text-white/70">{t.code}</th>
                 <th className="!pb-3 !text-left !text-sm !font-medium !text-white/70">
-                  Descripción
+                  {t.description}
                 </th>
-                <th className="!pb-3 !text-center !text-sm !font-medium !text-white/70">Unit</th>
-                <th className="!pb-3 !text-right !text-sm !font-medium !text-white/70">Amount</th>
-                <th className="!pb-3 !text-right !text-sm !font-medium !text-white/70">
-                  P.U. (USD)
+                <th className="!pb-3 !text-center !text-sm !font-medium !text-white/70">
+                  {t.unit}
                 </th>
                 <th className="!pb-3 !text-right !text-sm !font-medium !text-white/70">
-                  Subtotal (USD)
+                  {t.amount}
+                </th>
+                <th className="!pb-3 !text-right !text-sm !font-medium !text-white/70">
+                  {t.unitPrice}
+                </th>
+                <th className="!pb-3 !text-right !text-sm !font-medium !text-white/70">
+                  {t.subtotal}
                 </th>
               </tr>
             </thead>
@@ -84,7 +95,7 @@ export function BudgetTable({ title, subtitle, items, className }: BudgetTablePr
             <tfoot>
               <tr className="!border-t !border-white/20">
                 <td colSpan={5} className="!pt-4 !text-right !text-base !font-semibold !text-white">
-                  Total
+                  {t.total}
                 </td>
                 <td className="!pt-4 !text-right !text-base !font-bold !text-white">
                   {formatCurrency(total)}

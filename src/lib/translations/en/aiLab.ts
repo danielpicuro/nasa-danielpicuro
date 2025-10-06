@@ -1,0 +1,37 @@
+export const aiLab = {
+  stepperHeader: 'AI LAB',
+  stepIndicator: 'complete steps {currentStep} to {totalSteps}',
+  budgetStep: {
+    title: '1. AVAILABLE BUDGET',
+    subtitle: 'Select the investment range for licenses and services (3 years)',
+    low: 'Low (< $50k USD)',
+    lowDescription: 'Open source and basic tools',
+    medium: 'Medium ($50k - $200k USD)',
+    mediumDescription: 'Professional business solutions',
+    high: 'High (>$200k USD)',
+    highDescription: 'Fully supported enterprise platforms',
+  },
+  priorityStep: {
+    title: '2. PROJECT PRIORITY',
+    subtitle: 'What is the main objective of your digital twin?',
+    environmental: 'Environmental Analysis / CIM-GIS',
+    environmentalDescription: 'Floods, heat, air quality, terror, planning',
+    costing: '5D Costing/QTO Project Management,',
+    costingDescription: 'budgets, construction control, schedule',
+    communication: 'Communication/Visualization',
+    communicationDescription: 'Renders, videos, executive 3D twin stakeholder engagement',
+  },
+  infrastructureStep: {
+    title: '3. INFRASTRUCTURE',
+    subtitle: 'Deployment and support preference',
+    cloud: 'Cloud',
+    cloudDescription: 'Scalable, no hardware investment, remote access',
+    onPremise: 'On-premise',
+    onPremiseDescription: 'Total control, local data, no internet dependency',
+  },
+  stepNavigation: {
+    before: 'Before',
+    next: 'Next',
+    finish: 'Finish',
+  },
+};

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 export function ForecastPanel() {
@@ -68,9 +69,12 @@ export function ForecastPanel() {
         </div>
 
         {/* Action Button */}
-        <button className="!w-full !bg-cyan-500 hover:!bg-cyan-600 !text-white !py-2 !px-4 !rounded !text-sm !font-medium !transition-colors">
+        <Link
+          href={'/reports'}
+          className="!w-full !bg-cyan-500 hover:!bg-cyan-600 !text-white !py-2 !px-4 !rounded !text-sm !font-medium !transition-colors"
+        >
           Run Forecast Analysis
-        </button>
+        </Link>
       </div>
     </div>
   );

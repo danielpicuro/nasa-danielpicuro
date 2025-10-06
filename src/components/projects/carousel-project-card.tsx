@@ -52,7 +52,7 @@ export function CarouselProjectCard({
             </div>
 
             <button
-              onClick={() => router.push('/projects/lima')}
+              onClick={() => router.push('/ai-lab')}
               className="!bg-blue-600 hover:!bg-blue-700 !text-white !px-8 !py-2.5 !rounded-lg !font-semibold !transition-colors"
             >
               Open

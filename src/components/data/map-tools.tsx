@@ -1,6 +1,13 @@
+'use client';
+
 import { Ruler, Mountain, Circle, Route, ZoomIn, ZoomOut } from 'lucide-react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function MapTools() {
+  const { language } = useAiCompanion();
+  const t = translations[language].data.mapTools;
+
   return (
     <>
       {/* Bottom Tools */}
@@ -8,28 +15,28 @@ export function MapTools() {
         <div className="!flex !items-center !gap-4">
           {/* Herramientas Section */}
           <div className="!flex !items-center !gap-2 !pr-4 !border-r !border-slate-700">
-            <span className="!text-gray-400 !text-xs">🛠️ Herramientas</span>
+            <span className="!text-gray-400 !text-xs">🛠️ {t.tools}</span>
           </div>
 
           {/* Tool Buttons */}
           <button className="!flex !flex-col !items-center !gap-1 !px-3 !py-2 !rounded hover:!bg-slate-800 !transition-colors">
             <Ruler className="!w-5 !h-5 !text-gray-400" />
-            <span className="!text-gray-400 !text-xs">Medir</span>
+            <span className="!text-gray-400 !text-xs">{t.measure}</span>
           </button>
 
           <button className="!flex !flex-col !items-center !gap-1 !px-3 !py-2 !rounded hover:!bg-slate-800 !transition-colors">
             <Circle className="!w-5 !h-5 !text-gray-400" />
-            <span className="!text-gray-400 !text-xs">Clip</span>
+            <span className="!text-gray-400 !text-xs">{t.clip}</span>
           </button>
 
           <button className="!flex !flex-col !items-center !gap-1 !px-3 !py-2 !rounded hover:!bg-slate-800 !transition-colors">
             <Mountain className="!w-5 !h-5 !text-gray-400" />
-            <span className="!text-gray-400 !text-xs">Selección</span>
+            <span className="!text-gray-400 !text-xs">{t.selection}</span>
           </button>
 
           <button className="!flex !flex-col !items-center !gap-1 !px-3 !py-2 !rounded hover:!bg-slate-800 !transition-colors">
             <Route className="!w-5 !h-5 !text-gray-400" />
-            <span className="!text-gray-400 !text-xs">Routing</span>
+            <span className="!text-gray-400 !text-xs">{t.routing}</span>
           </button>
         </div>
       </div>

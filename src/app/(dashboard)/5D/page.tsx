@@ -1,24 +1,26 @@
 'use client';
 
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { useEffect } from 'react';
+import Link from 'next/link';
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { ScenarioCard } from '@/components/5D/scenario-card';
 import { ReturnPeriodSlider } from '@/components/5D/return-period-slider';
 import { ImpactPanel } from '@/components/5D/impact-panel';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 const scenarios = [
   {
     id: 'base',
-    title: 'Annual Base Scenario',
-    description: 'Current situation without interventions',
     gradient: 'cyan' as const,
     metrics: [],
   },
   {
     id: 'green-roofs',
-    title: 'Green roofs',
-    description: 'Implementation of cool roofs and vegetation',
     gradient: 'purple' as const,
     metrics: [
       { label: 'CO₂', value: '-15%' },
@@ -28,8 +30,6 @@ const scenarios = [
   },
   {
     id: 'permeable',
-    title: 'Permeable pavement',
-    description: 'Replacing asphalt with permeable pavement',
     gradient: 'teal' as const,
     metrics: [
       { label: 'Flood', value: '-55%' },
@@ -39,8 +39,6 @@ const scenarios = [
   },
   {
     id: 'combined',
-    title: 'Combined solution',
-    description: 'Green roofs + pavement + trees',
     gradient: 'dark' as const,
     metrics: [
       { label: 'CO₂', value: '-32%' },
@@ -51,75 +49,57 @@ const scenarios = [
 ];
 
 const greenRoofsMetrics = [
-  { label: 'Flood risk', value: 25, subtitle: '25% affected area', variant: 'inverse' as const },
-  { label: 'heat island', value: 30, subtitle: '-3% intensity', variant: 'default' as const },
-  {
-    label: 'Air quality',
-    value: 82,
-    subtitle: '82% quality (NOx/CO₂)',
-    variant: 'default' as const,
-  },
-  {
-    label: 'Investment required',
-    value: 65,
-    subtitle: 'USD (CapEx only)',
-    variant: 'inverse' as const,
-  },
+  { value: 25, variant: 'inverse' as const },
+  { value: 30, variant: 'default' as const },
+  { value: 82, variant: 'default' as const },
+  { value: 65, variant: 'inverse' as const },
 ];
 
 const skinsMetrics = [
-  { label: '75% affected area', value: 75, subtitle: '28% intensity', variant: 'inverse' as const },
-  {
-    label: 'Air quality',
-    value: 82,
-    subtitle: '82% quality (NOx/CO₂)',
-    variant: 'default' as const,
-  },
-  {
-    label: 'Investment required',
-    value: 70,
-    subtitle: 'USD (CapEx only)',
-    variant: 'inverse' as const,
-  },
-  { label: 'Air quality', value: 82, subtitle: 'USD (CapEx only)', variant: 'default' as const },
+  { value: 75, variant: 'inverse' as const },
+  { value: 82, variant: 'default' as const },
+  { value: 70, variant: 'inverse' as const },
+  { value: 82, variant: 'default' as const },
 ];
 
 export default function FiveDPage() {
   const [activeScenario, setActiveScenario] = useState('green-roofs');
+  const { language } = useAiCompanion();
+  const t = translations[language].fiveD;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <div className="!min-h-screen !bg-gradient-to-br !from-slate-950 !via-slate-900 !to-slate-950">
       {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-sm">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors">
-                <ArrowLeft className="w-5 h-5" />
-                <span className="font-medium">Black</span>
+      <header className="!border-b !border-slate-800 !bg-slate-900/50 !backdrop-blur-sm">
+        <div className="!container !mx-auto !px-6 !py-4">
+          <div className="!flex !items-center !justify-between">
+            <div className="!flex !items-center !gap-4">
+              <button className="!flex !items-center !gap-2 !text-slate-300 hover:!text-white !transition-colors">
+                <ArrowLeft className="!w-5 !h-5" />
+                <span className="!font-medium">{t.blackButton}</span>
               </button>
-              <div className="h-8 w-px bg-slate-700" />
+              <div className="!h-8 !w-px !bg-slate-700" />
               <div>
-                <h1 className="text-2xl font-bold text-white">5D Costs - Glodon</h1>
-                <p className="text-sm text-slate-400">
-                  Simulate climate and environmental impact with NASA data and sensors
-                </p>
+                <h1 className="!text-2xl !font-bold !text-white">{t.headerTitle}</h1>
+                <p className="!text-sm !text-slate-400">{t.headerSubtitle}</p>
               </div>
             </div>
-            <div className="flex gap-3">
+            <div className="!flex !gap-3">
+              <Link href={'twin-3d'}>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="!px-6 !py-2 !bg-slate-700 hover:!bg-slate-600 !text-white !rounded-lg !font-medium !transition-colors"
+                >
+                  {t.seeTwinButton}
+                </motion.button>
+              </Link>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-6 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-medium transition-colors"
+                className="!px-6 !py-2 !bg-slate-800 hover:!bg-slate-700 !text-white !rounded-lg !font-medium !transition-colors"
               >
-                See twin in 3D
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium transition-colors"
-              >
-                Send to 5D
+                {t.sendTo5DButton}
               </motion.button>
             </div>
           </div>
@@ -127,16 +107,16 @@ export default function FiveDPage() {
       </header>
 
       {/* Main Content */}
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid grid-cols-12 gap-6">
+      <div className="!container !mx-auto !px-6 !py-8">
+        <div className="!grid !grid-cols-12 !gap-6">
           {/* Left Sidebar - Scenarios */}
-          <div className="col-span-3 space-y-4">
-            <h2 className="text-xl font-bold text-white mb-4">Available scenarios</h2>
-            {scenarios.map(scenario => (
+          <div className="!col-span-3 !space-y-4">
+            <h2 className="!text-xl !font-bold !text-white !mb-4">{t.scenariosTitle}</h2>
+            {scenarios.map((scenario, index) => (
               <ScenarioCard
                 key={scenario.id}
-                title={scenario.title}
-                description={scenario.description}
+                title={t.scenarios[index].title}
+                description={t.scenarios[index].description}
                 metrics={scenario.metrics}
                 gradient={scenario.gradient}
                 isActive={activeScenario === scenario.id}
@@ -146,15 +126,27 @@ export default function FiveDPage() {
           </div>
 
           {/* Right Content Area */}
-          <div className="col-span-9 space-y-6">
+          <div className="!col-span-9 !space-y-6">
             {/* Return Period Slider */}
             <ReturnPeriodSlider />
 
             {/* Impact Metrics - Green Roofs */}
-            <ImpactPanel title="Impact Metrics - Green Roofs" metrics={greenRoofsMetrics} />
+            <ImpactPanel
+              title={t.greenRoofsMetrics.title}
+              metrics={greenRoofsMetrics.map((metric, index) => ({
+                ...metric,
+                ...t.greenRoofsMetrics.metrics[index],
+              }))}
+            />
 
             {/* 6D Skins Applied */}
-            <ImpactPanel title="6D Skins applied" metrics={skinsMetrics} />
+            <ImpactPanel
+              title={t.skinsMetrics.title}
+              metrics={skinsMetrics.map((metric, index) => ({
+                ...metric,
+                ...t.skinsMetrics.metrics[index],
+              }))}
+            />
           </div>
         </div>
       </div>

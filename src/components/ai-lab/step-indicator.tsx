@@ -1,9 +1,17 @@
+'use client';
+
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+
 interface StepIndicatorProps {
   currentStep: number;
   totalSteps: number;
 }
 
 export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].aiLab;
+
   return (
     <div className="!bg-slate-900/60 !border !border-slate-700 !rounded-lg !p-6">
       <div className="!flex !items-center !justify-between !max-w-md">
@@ -31,7 +39,9 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
 
         {/* Text indicator */}
         <div className="!ml-6 !text-gray-300">
-          complete steps {currentStep} to {totalSteps}
+          {t.stepIndicator
+            .replace('{currentStep}', currentStep.toString())
+            .replace('{totalSteps}', totalSteps.toString())}
         </div>
       </div>
     </div>

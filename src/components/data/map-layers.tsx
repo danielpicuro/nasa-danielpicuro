@@ -1,11 +1,17 @@
 'use client';
 
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+
 interface MapLayersProps {
   selectedLayers: string[];
   onLayersChange: (layers: string[]) => void;
 }
 
 export function MapLayers({ selectedLayers, onLayersChange }: MapLayersProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].data.mapLayers;
+
   const toggleLayer = (layerId: string) => {
     onLayersChange(
       selectedLayers.includes(layerId)
@@ -15,18 +21,18 @@ export function MapLayers({ selectedLayers, onLayersChange }: MapLayersProps) {
   };
 
   const layers = [
-    { id: 'relieve', label: 'Relieve (DEM/DTM)', icon: '🏔️' },
-    { id: 'uso-suelo', label: 'Uso de suelo', icon: '🗺️' },
-    { id: 'redes', label: 'Redes (agua/energía)', icon: '⚡' },
-    { id: 'edificios', label: 'Edificios', icon: '🏢' },
-    { id: 'subsuelo', label: 'Subsuelo', icon: '⚙️' },
-    { id: 'nubes', label: 'Nubes de puntos', icon: '📍' },
-    { id: 'sensores', label: 'Sensores móviles', icon: '📡' },
+    { id: 'relieve', label: t.relief, icon: '🏔️' },
+    { id: 'uso-suelo', label: t.landUse, icon: '🗺️' },
+    { id: 'redes', label: t.networks, icon: '⚡' },
+    { id: 'edificios', label: t.buildings, icon: '🏢' },
+    { id: 'subsuelo', label: t.underground, icon: '⚙️' },
+    { id: 'nubes', label: t.pointClouds, icon: '📍' },
+    { id: 'sensores', label: t.mobileSensors, icon: '📡' },
   ];
 
   return (
     <div className="!border-t !border-slate-800 !pt-4">
-      <h3 className="!text-white !text-sm !font-semibold !mb-3">Capas del mapa</h3>
+      <h3 className="!text-white !text-sm !font-semibold !mb-3">{t.title}</h3>
 
       <div className="!space-y-3">
         {layers.map(layer => (

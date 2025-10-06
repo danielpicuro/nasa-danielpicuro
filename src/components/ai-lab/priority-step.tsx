@@ -1,6 +1,8 @@
 'use client';
 
 import { RadioOption } from '@/components/ai-lab/radio-option';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 interface PriorityStepProps {
   selectedPriority: string;
@@ -8,12 +10,15 @@ interface PriorityStepProps {
 }
 
 export function PriorityStep({ selectedPriority, onSelectPriority }: PriorityStepProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].aiLab.priorityStep;
+
   return (
     <div className="!space-y-6">
       {/* Step title */}
       <div className="!mb-8">
-        <h2 className="!text-3xl !font-bold !text-white !mb-2">2. PROJECT PRIORITY</h2>
-        <p className="!text-gray-400">What is the main objective of your digital twin?</p>
+        <h2 className="!text-3xl !font-bold !text-white !mb-2">{t.title}</h2>
+        <p className="!text-gray-400">{t.subtitle}</p>
       </div>
 
       {/* Options */}
@@ -22,24 +27,24 @@ export function PriorityStep({ selectedPriority, onSelectPriority }: PrioritySte
           value="environmental"
           selected={selectedPriority === 'environmental'}
           onSelect={onSelectPriority}
-          title="Environmental Analysis / CIM-GIS"
-          description="Floods, heat, air quality, terror, planning"
+          title={t.environmental}
+          description={t.environmentalDescription}
         />
 
         <RadioOption
           value="costing"
           selected={selectedPriority === 'costing'}
           onSelect={onSelectPriority}
-          title="5D Costing/QTO Project Management,"
-          description="budgets, construction control, schedule"
+          title={t.costing}
+          description={t.costingDescription}
         />
 
         <RadioOption
           value="communication"
           selected={selectedPriority === 'communication'}
           onSelect={onSelectPriority}
-          title="Communication/Visualization"
-          description="Renders, videos, executive 3D twin stakeholder engagement"
+          title={t.communication}
+          description={t.communicationDescription}
         />
       </div>
     </div>

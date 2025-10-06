@@ -1,8 +1,14 @@
 'use client';
 
 import { MapPin } from 'lucide-react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+import Link from 'next/link';
 
 export function CarouselNewProjectCard() {
+  const { language } = useAiCompanion();
+  const t = translations[language].projects.newProjectCard;
+
   return (
     <div
       className="!relative !rounded-2xl !overflow-hidden !border !border-purple-500/50 !shadow-2xl !shadow-purple-500/20"
@@ -19,19 +25,19 @@ export function CarouselNewProjectCard() {
           </div>
 
           <div>
-            <h3 className="!text-3xl !font-bold !text-white !mb-2">NEW PROJECT</h3>
+            <h3 className="!text-3xl !font-bold !text-white !mb-2">{t.title}</h3>
           </div>
         </div>
 
         <div className="!space-y-6">
-          <p className="!text-purple-100 !text-sm !leading-relaxed">
-            Need to set up a new digital twin? Contact our team to configure a new city project with
-            SuperMap integration, 5D cost analysis, and AI-powered insights.
-          </p>
+          <p className="!text-purple-100 !text-sm !leading-relaxed">{t.description}</p>
 
-          <button className="!w-full !bg-purple-500/20 hover:!bg-purple-500/30 !text-white !border-2 !border-purple-300/50 !px-6 !py-3 !rounded-xl !font-semibold !transition-all !backdrop-blur-sm">
-            Request New Project
-          </button>
+          <Link
+            href={'/projects/selected'}
+            className="!w-full !bg-purple-500/20 hover:!bg-purple-500/30 !text-white !border-2 !border-purple-300/50 !px-6 !py-3 !rounded-xl !font-semibold !transition-all !backdrop-blur-sm"
+          >
+            {t.buttonText}
+          </Link>
         </div>
       </div>
 

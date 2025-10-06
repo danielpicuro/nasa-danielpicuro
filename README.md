@@ -1,45 +1,135 @@
-# Space Explorer
+# With Trae - NASA Urban Intelligence Platform
 
-Space Explorer es un proyecto web desarrollado con Next.js que simula una plataforma de exploración espacial inspirada en la NASA. El proyecto tiene como misión expandir la presencia humana en el espacio y avanzar en la exploración del cosmos.
+With Trae es una plataforma de inteligencia urbana desarrollada con Next.js que utiliza datos de la NASA y tecnologías de IA para redefinir el urbanismo. La plataforma combina análisis espacial, gemelos digitales y herramientas de planificación urbana para crear ciudades más inteligentes y sostenibles.
 
 ## Resumen del Proyecto
 
-Space Explorer fue fundado con la visión de acelerar el viaje de la humanidad para convertirse en una especie multiplanetaria. La plataforma ofrece:
+With Trae fue desarrollado con la visión de transformar la planificación urbana mediante el uso de datos satelitales de la NASA y tecnologías de inteligencia artificial. La plataforma ofrece:
 
-- Información sobre misiones espaciales actuales y futuras
-- Productos y tecnologías para la exploración espacial
-- Programas educativos y de participación ciudadana
-- Mapa interactivo de instalaciones y sitios de lanzamiento
+- **Análisis de datos espaciales**: Integración de datos satelitales de la NASA para análisis urbano
+- **Gemelos digitales 3D**: Visualización y modelado 3D de ciudades y proyectos urbanos
+- **Herramientas de planificación**: Módulos especializados para planificación urbana, análisis de recursos y gestión de infraestructura
+- **IA urbana**: Asistente de IA para recomendaciones y análisis automatizado
+- **Gestión de proyectos**: Sistema completo de gestión de proyectos urbanos con métricas 5D, 6D y 7D
 
-El proyecto incluye un plan de desarrollo en fases que abarca operaciones en órbita terrestre, exploración lunar, misiones a Marte y exploración del espacio profundo.
+## Características Principales
+
+### 🏙️ Dashboard Principal
+
+- **Overview**: Vista general de proyectos con métricas clave (CAPEX, población expuesta, riesgo de inundación)
+- **Data**: Visualización de datos espaciales con controles de capas, vista día/noche y herramientas de análisis
+- **Planning**: Herramientas de planificación urbana con mapas interactivos
+- **Resources**: Análisis de recursos urbanos con visualizaciones 3D
+- **Analysis**: Módulo de análisis avanzado con métricas de sostenibilidad
+- **Reports**: Generación de reportes y documentación
+- **AI Lab**: Laboratorio de inteligencia artificial para análisis automatizado
+
+### 🛠️ Herramientas Especializadas
+
+- **3D Twin**: Gemelo digital 3D con herramientas de edición y visualización
+- **5D Management**: Gestión de costos y presupuestos (5D BIM)
+- **6D Sustainability**: Análisis de sostenibilidad y impacto ambiental
+- **7D Operations**: Gestión de operaciones y mantenimiento
+- **Live Sync**: Sincronización en tiempo real con herramientas BIM
+
+### 🔐 Sistema de Acceso
+
+- **Login simplificado**: Formulario de acceso que recopila información del usuario (email, rol, presupuesto, prioridades)
+- **Integración con Supabase**: Almacenamiento de datos de acceso para seguimiento de usuarios
+- **Sin registro**: Acceso directo sin proceso de registro o confirmación
+
+## Tecnologías Utilizadas
+
+- **Frontend**: Next.js 15, React 19, TypeScript
+- **Styling**: Tailwind CSS 4, Framer Motion
+- **UI Components**: Radix UI, Lucide React
+- **3D Visualization**: GSAP, WebGL
+- **Database**: Supabase
+- **AI Integration**: Google GenAI
+- **Maps**: Google Maps API
+- **Development**: ESLint, Prettier, Husky
 
 ## Getting Started
 
-First, run the development server:
+### Prerrequisitos
+
+- Node.js 18+
+- pnpm (recomendado) o npm
+
+### Instalación
+
+1. Clona el repositorio:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd with-trae-nasa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instala las dependencias:
 
-## Learn More
+```bash
+pnpm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Configura las variables de entorno:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Ejecuta el servidor de desarrollo:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+```
 
-## Deploy on Vercel
+5. Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estructura del Proyecto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+├── app/                    # App Router de Next.js
+│   ├── (auth)/            # Rutas de autenticación
+│   │   └── login/         # Página de login
+│   ├── (dashboard)/       # Dashboard principal
+│   │   ├── data/          # Visualización de datos
+│   │   ├── planning/      # Herramientas de planificación
+│   │   ├── resources/     # Análisis de recursos
+│   │   ├── analysis/      # Análisis avanzado
+│   │   ├── reports/       # Reportes
+│   │   ├── ai-lab/        # Laboratorio de IA
+│   │   ├── 3d-twin/       # Gemelo digital 3D
+│   │   ├── 5D/            # Gestión 5D
+│   │   ├── 6D/            # Sostenibilidad 6D
+│   │   ├── 7D/            # Operaciones 7D
+│   │   └── live-sync/     # Sincronización en vivo
+│   └── (home)/            # Página de inicio
+├── components/            # Componentes reutilizables
+│   ├── ui/               # Componentes de UI base
+│   ├── landing/          # Componentes de landing
+│   ├── overview/         # Componentes de overview
+│   ├── planning/         # Componentes de planificación
+│   └── shared/           # Componentes compartidos
+├── features/             # Características específicas
+│   ├── map/              # Funcionalidad de mapas
+│   └── product/          # Datos de productos
+├── hooks/                # Custom hooks
+├── lib/                  # Utilidades y configuraciones
+└── types/                # Definiciones de tipos TypeScript
+```
+
+## Scripts Disponibles
+
+```bash
+# Desarrollo
+pnpm dev              # Servidor de desarrollo con Turbopack
+pnpm build            # Build de producción con Turbopack
+pnpm start            # Servidor de producción
+
+# Calidad de código
+pnpm lint             # Ejecutar ESLint
+pnpm format           # Formatear código con Prettier
+pnpm check-format     # Verificar formato
+
+# Git hooks
+pnpm prepare          # Configurar Husky
+```
+
+**With Trae** - Transformando el urbanismo con datos de la NASA e inteligencia artificial.

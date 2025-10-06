@@ -1,13 +1,16 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
 import { PlanningNavbar } from '@/components/planning/planning-navbar';
 import { PlanningTabs } from '@/components/planning/planning-tabs';
 import { PlanningMetrics } from '@/components/planning/planning-metrics';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Planning',
-};
+import { translations } from '@/lib/translations';
 
 export default function PlanningPage() {
+  const { language } = useAiCompanion();
+  const t = translations[language].planning;
+
   return (
     <div className="!min-h-screen !bg-[url('/images/bolivie.jpg')] !bg-cover !bg-center !relative">
       {/* Dark overlay for better text visibility */}
@@ -29,7 +32,7 @@ export default function PlanningPage() {
         {/* Suburb Label */}
         <div className="!absolute !bottom-8 !left-8">
           <div className="!bg-black/50 !backdrop-blur-sm !px-4 !py-2 !rounded-md !border !border-white/20">
-            <p className="!text-white !text-sm !font-medium">Suburb 2</p>
+            <p className="!text-white !text-sm !font-medium">{t.suburb}</p>
           </div>
         </div>
       </div>

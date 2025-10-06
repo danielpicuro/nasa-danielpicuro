@@ -1,11 +1,17 @@
 'use client';
 
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+
 interface ViewToggleProps {
   viewMode: '3D' | '2D';
   onViewModeChange: (mode: '3D' | '2D') => void;
 }
 
 export function ViewToggle({ viewMode, onViewModeChange }: ViewToggleProps) {
+  const { language } = useAiCompanion();
+  const t = translations[language].data.viewToggle;
+
   return (
     <div className="!flex !gap-2 !bg-slate-900/90 !rounded-lg !p-2 !border !border-slate-700">
       <button
@@ -16,7 +22,7 @@ export function ViewToggle({ viewMode, onViewModeChange }: ViewToggleProps) {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        3D View
+        {t.threeD}
       </button>
 
       <button
@@ -27,7 +33,7 @@ export function ViewToggle({ viewMode, onViewModeChange }: ViewToggleProps) {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        2D Map
+        {t.twoD}
       </button>
     </div>
   );

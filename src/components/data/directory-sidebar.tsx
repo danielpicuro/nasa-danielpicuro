@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { ChevronDown, ChevronRight, Search } from 'lucide-react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 interface DirectorySidebarProps {
   selectedLayers: string[];
@@ -11,6 +13,8 @@ interface DirectorySidebarProps {
 export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySidebarProps) {
   const [expandedSections, setExpandedSections] = useState<string[]>(['gis']);
   const [searchQuery, setSearchQuery] = useState('');
+  const { language } = useAiCompanion();
+  const t = translations[language].data.directorySidebar;
 
   const toggleSection = (section: string) => {
     setExpandedSections(prev =>
@@ -31,7 +35,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
       {/* Header */}
       <div className="!flex !items-center !gap-2 !mb-4">
         <div className="!text-cyan-400 !text-lg">📁</div>
-        <h2 className="!text-white !font-semibold">Directory</h2>
+        <h2 className="!text-white !font-semibold">{t.title}</h2>
       </div>
 
       {/* Search */}
@@ -39,7 +43,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
         <Search className="!absolute !left-3 !top-1/2 !-translate-y-1/2 !w-4 !h-4 !text-gray-500" />
         <input
           type="text"
-          placeholder="Search layers..."
+          placeholder={t.searchPlaceholder}
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
           className="!w-full !bg-slate-900 !text-white !text-sm !pl-10 !pr-3 !py-2 !rounded !border !border-slate-700 focus:!border-cyan-500 focus:!outline-none"
@@ -57,7 +61,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
           ) : (
             <ChevronRight className="!w-4 !h-4" />
           )}
-          <span>GIS</span>
+          <span>{t.gis}</span>
         </button>
 
         {expandedSections.includes('gis') && (
@@ -69,7 +73,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('bld-img')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Bld Img Image</span>
+              <span>{t.bldImgImage}</span>
             </label>
 
             <label className="!flex !items-center !gap-2 !text-sm !text-gray-300 !cursor-pointer">
@@ -79,7 +83,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('bld-buildings')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Bld Buildings</span>
+              <span>{t.bldBuildings}</span>
             </label>
 
             <label className="!flex !items-center !gap-2 !text-sm !text-gray-300 !cursor-pointer">
@@ -89,7 +93,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('land-use')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Land Use in Bld Img</span>
+              <span>{t.landUse}</span>
             </label>
 
             <label className="!flex !items-center !gap-2 !text-sm !text-gray-300 !cursor-pointer">
@@ -99,7 +103,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('green-areas')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Green Areas in Bld Img</span>
+              <span>{t.greenAreas}</span>
             </label>
           </div>
         )}
@@ -116,7 +120,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
           ) : (
             <ChevronRight className="!w-4 !h-4" />
           )}
-          <span>GCIP</span>
+          <span>{t.gcip}</span>
         </button>
 
         {expandedSections.includes('gcip') && (
@@ -128,7 +132,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('gcip-img')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Bld Img Image</span>
+              <span>{t.bldImgImage}</span>
             </label>
 
             <label className="!flex !items-center !gap-2 !text-sm !text-gray-300 !cursor-pointer">
@@ -138,7 +142,7 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
                 onChange={() => toggleLayer('networks')}
                 className="!w-4 !h-4 !rounded !border-gray-600 !text-cyan-500 focus:!ring-cyan-500"
               />
-              <span>Networks</span>
+              <span>{t.networks}</span>
             </label>
           </div>
         )}
@@ -155,24 +159,24 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
           ) : (
             <ChevronRight className="!w-4 !h-4" />
           )}
-          <span>VMG</span>
+          <span>{t.vmg}</span>
         </button>
       </div>
 
       {/* Assets Section */}
       <div className="!mt-6">
-        <h3 className="!text-gray-400 !text-xs !uppercase !mb-2">Assets</h3>
+        <h3 className="!text-gray-400 !text-xs !uppercase !mb-2">{t.assets}</h3>
         <div className="!space-y-2">
-          <div className="!text-sm !text-gray-300 !pl-2">Colector Principal A-12</div>
-          <div className="!text-sm !text-gray-300 !pl-2">Estación de Bombeo EB-03</div>
-          <div className="!text-sm !text-gray-300 !pl-2">Cuenca de Retención Norte</div>
+          <div className="!text-sm !text-gray-300 !pl-2">{t.mainCollector}</div>
+          <div className="!text-sm !text-gray-300 !pl-2">{t.pumpingStation}</div>
+          <div className="!text-sm !text-gray-300 !pl-2">{t.northRetentionBasin}</div>
         </div>
       </div>
 
       {/* Coordinate System */}
       <div className="!mt-6 !p-3 !bg-slate-900 !rounded !text-xs">
-        <div className="!text-gray-400">Coordinate System</div>
-        <div className="!text-white">EPSG:5349 (SIRGAS)</div>
+        <div className="!text-gray-400">{t.coordinateSystem}</div>
+        <div className="!text-white">{t.coordinateSystemValue}</div>
       </div>
     </div>
   );

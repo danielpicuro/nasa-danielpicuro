@@ -7,8 +7,10 @@ import { BudgetStep } from '@/components/ai-lab/budget-step';
 import { PriorityStep } from '@/components/ai-lab/priority-step';
 import { InfrastructureStep } from '@/components/ai-lab/infrastructure-step';
 import { StepNavigation } from '@/components/ai-lab/step-navigation';
+import { useRouter } from 'next/navigation';
 
 export default function AILabPage() {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedBudget, setSelectedBudget] = useState<string>('medium');
   const [selectedPriority, setSelectedPriority] = useState<string>('environmental');
@@ -20,8 +22,7 @@ export default function AILabPage() {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Handle finish
-      alert('Configuration completed!');
+      router.push('/recommendation');
     }
   };
 
@@ -32,22 +33,25 @@ export default function AILabPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[url('/images/aerial-city-map.jpg')] bg-cover bg-center relative">
+    <div className="!min-h-screen !bg-[url('/images/barranco.jpg')] !bg-cover !bg-center !relative">
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-slate-900/80"></div>
+      <div className="!absolute !inset-0 !bg-slate-900/80">
+        {/* Images */}
+        <div className="!absolute !inset-0 !flex !items-center !justify-center"></div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center p-8">
+      <div className="!relative !z-10 !min-h-screen !flex !flex-col !items-center !justify-center !p-8">
         {/* Header with glowing circle */}
         <StepperHeader />
 
         {/* Main stepper container */}
-        <div className="w-full max-w-4xl mt-12">
+        <div className="!w-full !max-w-4xl !mt-12">
           {/* Step Indicator */}
           <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
 
           {/* Step Content */}
-          <div className="mt-8">
+          <div className="!mt-8">
             {currentStep === 1 && (
               <BudgetStep selectedBudget={selectedBudget} onSelectBudget={setSelectedBudget} />
             )}

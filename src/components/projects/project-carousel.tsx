@@ -1,54 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CarouselProjectCard } from './carousel-project-card';
 import { CarouselNewProjectCard } from './carousel-new-project-card';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const projects = [
-  {
-    id: 'planning',
-    title: 'URBAN PLANNING',
-    location: 'Lima, Peru',
-    population: '10.5M',
-    image: '/images/map.jpg',
-  },
-  {
-    id: 'coastal',
-    title: 'COASTAL RESILIENCE',
-    location: 'Lima, Peru',
-    population: '9.7M',
-    image: '/images/map.jpg',
-  },
-  {
-    id: 'center',
-    title: 'LIMA CITY',
-    location: 'Lima, Peru',
-    population: '9.7M',
-    image: '/images/map.jpg',
-    isCenter: true,
-  },
-  {
-    id: 'new',
-    isNewProject: true,
-  },
-  {
-    id: 'hospital',
-    title: 'HOSPITAL VITARTE',
-    location: 'Lima, Peru',
-    population: '2M',
-    image: '/images/map.jpg',
-  },
-  {
-    id: 'infrastructure',
-    title: 'INFRASTRUCTURE',
-    location: 'Lima, Peru',
-    population: '8.2M',
-    image: '/images/map.jpg',
-  },
-];
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function ProjectCarousel() {
+  const { language } = useAiCompanion();
+  const projects = translations[language].projects.projectCards;
   const [currentIndex, setCurrentIndex] = useState(2);
 
   const handlePrevious = () => {
@@ -78,7 +39,7 @@ export function ProjectCarousel() {
                 transform: `translateX(${offset * 320}px) scale(${
                   isCenter ? 1.2 : 0.85
                 }) translateZ(${isCenter ? 0 : -100}px)`,
-                zIndex: isCenter ? 30 : 20 - Math.abs(offset),
+                zIndex: isCenter ? 40 : 20 - Math.abs(offset),
                 opacity: Math.abs(offset) > 1 ? 0.4 : 1,
               }}
             >
@@ -98,10 +59,17 @@ export function ProjectCarousel() {
         })}
       </div>
 
+      {/* Invisible Navigation Layer */}
+      <div className="!absolute !inset-0 !z-30 !flex !justify-center !items-center">
+        <div onClick={handlePrevious} className="!h-full !flex-1" />
+        <div className="!h-full !pointer-events-none" style={{ width: 384 }} />
+        <div onClick={handleNext} className="!h-full !flex-1" />
+      </div>
+
       {/* Navigation Buttons */}
       <button
         onClick={handlePrevious}
-        className="!absolute !left-4 !top-1/2 !-translate-y-1/2 !z-40 !bg-slate-800/50 hover:!bg-slate-700/50 !text-white !p-3 !rounded-full !backdrop-blur-sm !border !border-cyan-500/30 !transition-all"
+        className="!absolute !left-4 !top-1/2 !-translate-y-1/2 !z-50 !bg-slate-800/50 hover:!bg-slate-700/50 !text-white !p-3 !rounded-full !backdrop-blur-sm !border !border-cyan-500/30 !transition-all"
         aria-label="Previous project"
       >
         <ChevronLeft className="!w-6 !h-6" />
@@ -109,7 +77,7 @@ export function ProjectCarousel() {
 
       <button
         onClick={handleNext}
-        className="!absolute !right-4 !top-1/2 !-translate-y-1/2 !z-40 !bg-slate-800/50 hover:!bg-slate-700/50 !text-white !p-3 !rounded-full !backdrop-blur-sm !border !border-cyan-500/30 !transition-all"
+        className="!absolute !right-4 !top-1/2 !-translate-y-1/2 !z-50 !bg-slate-800/50 hover:!bg-slate-700/50 !text-white !p-3 !rounded-full !backdrop-blur-sm !border !border-cyan-500/30 !transition-all"
         aria-label="Next project"
       >
         <ChevronRight className="!w-6 !h-6" />

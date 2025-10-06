@@ -1,18 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-
-const tabs = [
-  { id: 'overview', label: 'City Overview' },
-  { id: 'region', label: 'Region Planning' },
-  { id: 'alerts', label: 'Alerts', badge: true },
-  { id: 'building', label: 'Building Mgmnt' },
-  { id: 'envir', label: 'Envir Monitoring' },
-  { id: 'commercial', label: 'Commercial' },
-];
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function PlanningTabs() {
   const [activeTab, setActiveTab] = useState('alerts');
+  const { language } = useAiCompanion();
+  const t = translations[language].planning.planningTabs;
+
+  const tabs = [
+    { id: 'overview', label: t.cityOverview },
+    { id: 'region', label: t.regionPlanning },
+    { id: 'alerts', label: t.alerts, badge: true },
+    { id: 'building', label: t.buildingMgmnt },
+    { id: 'envir', label: t.envirMonitoring },
+    { id: 'commercial', label: t.commercial },
+  ];
 
   return (
     <div className="!flex !items-center !gap-2">

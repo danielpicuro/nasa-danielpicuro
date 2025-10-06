@@ -1,9 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function WeatherControls() {
   const [activeWeather, setActiveWeather] = useState<string[]>(['sun']);
+  const { language } = useAiCompanion();
+  const t = translations[language].data.weatherControls;
 
   const toggleWeather = (weather: string) => {
     setActiveWeather(prev =>
@@ -21,7 +25,7 @@ export function WeatherControls() {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        ☀️ Sun
+        ☀️ {t.sun}
       </button>
 
       <button
@@ -32,7 +36,7 @@ export function WeatherControls() {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        🌙 Moon
+        🌙 {t.moon}
       </button>
 
       <button
@@ -43,7 +47,7 @@ export function WeatherControls() {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        ☁️ Cloudy
+        ☁️ {t.cloudy}
       </button>
 
       <button
@@ -54,7 +58,7 @@ export function WeatherControls() {
             : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
         }`}
       >
-        🌫️ Fog
+        🌫️ {t.fog}
       </button>
     </div>
   );

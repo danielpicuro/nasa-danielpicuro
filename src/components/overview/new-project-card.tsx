@@ -1,12 +1,9 @@
 'use client';
 
 import { MapPin } from 'lucide-react';
+import Link from 'next/link';
 
 export function NewProjectCard() {
-  const handleRequestProject = () => {
-    alert('Aguanta, pronto estrá listo');
-  };
-
   return (
     <div className="!bg-gradient-to-r !from-purple-900/40 !to-purple-800/40 !border-2 !border-purple-500/50 !rounded-lg !p-6 !mb-8">
       <div className="!flex !items-start !gap-6">
@@ -22,12 +19,12 @@ export function NewProjectCard() {
             Need to set up a new digital twin? Contact our team to configure a new city project with
             SuperMap integration, 5D cost analysis, and AI-powered insights.
           </p>
-          <button
-            onClick={handleRequestProject}
+          <Link
+            href="/ai-lab"
             className="!bg-transparent !border-2 !border-purple-400 !text-purple-300 !px-6 !py-2 !rounded-lg !font-semibold hover:!bg-purple-500/20 !transition-all"
           >
             Request New Project
-          </button>
+          </Link>
         </div>
       </div>
     </div>

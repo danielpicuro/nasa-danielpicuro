@@ -1,4 +1,12 @@
+'use client';
+
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+
 export function StepperHeader() {
+  const { language } = useAiCompanion();
+  const t = translations[language].aiLab;
+
   return (
     <div className="!relative">
       {/* Glowing circle */}
@@ -8,7 +16,9 @@ export function StepperHeader() {
         <div className="!absolute !inset-4 !rounded-full !bg-white/5 !blur-lg"></div>
 
         {/* Text */}
-        <h1 className="!text-4xl !font-bold !text-white !z-10 !tracking-wider">IA LAB</h1>
+        <h1 className="!text-4xl !font-bold !text-white !z-10 !tracking-wider">
+          {t.stepperHeader}
+        </h1>
       </div>
     </div>
   );

@@ -1,6 +1,13 @@
+'use client';
+
 import { Brain } from 'lucide-react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
 
 export function IAUrbanLandSection() {
+  const { language } = useAiCompanion();
+  const t = translations[language].resources.iaUrbanLandSection;
+
   return (
     <div className="!bg-slate-900/80 !rounded-lg !p-4 !border-2 !border-cyan-500/50">
       <div className="!flex !items-start !gap-3 !mb-4">
@@ -10,29 +17,27 @@ export function IAUrbanLandSection() {
           </div>
         </div>
         <div>
-          <h2 className="!text-white !font-bold !text-lg">IA Urban Land</h2>
-          <p className="!text-gray-400 !text-xs">
-            AI-powered predictive analysis and smart recommendations
-          </p>
+          <h2 className="!text-white !font-bold !text-lg">{t.title}</h2>
+          <p className="!text-gray-400 !text-xs">{t.subtitle}</p>
         </div>
       </div>
       <div className="!space-y-3">
         <div className="!bg-cyan-600/20 !border !border-cyan-500/50 !rounded-lg !p-3">
-          <h3 className="!text-white !font-semibold !text-sm !mb-2">10-Year Forecast</h3>
+          <h3 className="!text-white !font-semibold !text-sm !mb-2">{t.forecast}</h3>
           <button className="!w-full !bg-blue-600 hover:!bg-blue-700 !text-white !py-2 !px-4 !rounded !text-sm !font-medium !transition-colors">
-            Open in Map
+            {t.openInMap}
           </button>
         </div>
         <div className="!bg-cyan-600/20 !border !border-cyan-500/50 !rounded-lg !p-3">
-          <h3 className="!text-white !font-semibold !text-sm !mb-2">Before / After</h3>
+          <h3 className="!text-white !font-semibold !text-sm !mb-2">{t.beforeAfter}</h3>
           <button className="!w-full !bg-blue-600 hover:!bg-blue-700 !text-white !py-2 !px-4 !rounded !text-sm !font-medium !transition-colors">
-            View in 3D twin
+            {t.viewIn3D}
           </button>
         </div>
         <div className="!bg-cyan-600/20 !border !border-cyan-500/50 !rounded-lg !p-3">
-          <h3 className="!text-white !font-semibold !text-sm !mb-2">Optimal Site (MCDA)</h3>
+          <h3 className="!text-white !font-semibold !text-sm !mb-2">{t.optimalSite}</h3>
           <button className="!w-full !bg-blue-600 hover:!bg-blue-700 !text-white !py-2 !px-4 !rounded !text-sm !font-medium !transition-colors">
-            Analiza Location
+            {t.analyzeLocation}
           </button>
         </div>
       </div>

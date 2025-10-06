@@ -1,9 +1,15 @@
 'use client';
 
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
+import { translations } from '@/lib/translations';
+
 export function SuburbPopulationChart() {
+  const { language } = useAiCompanion();
+  const t = translations[language].resources.suburbPopulationChart;
+
   return (
     <div className="!bg-slate-900/80 !rounded-lg !p-4">
-      <h2 className="!text-white !font-bold !text-lg !mb-4">Suburb Population</h2>
+      <h2 className="!text-white !font-bold !text-lg !mb-4">{t.title}</h2>
       <div className="!flex !items-center !justify-center">
         <div className="!relative !w-32 !h-32">
           <svg viewBox="0 0 100 100" className="!transform !-rotate-90">
@@ -40,14 +46,14 @@ export function SuburbPopulationChart() {
           </svg>
           <div className="!absolute !inset-0 !flex !items-center !justify-center">
             <div className="!text-center">
-              <div className="!text-cyan-400 !text-xs !font-semibold">Suburb 1</div>
+              <div className="!text-cyan-400 !text-xs !font-semibold">{t.suburb1}</div>
             </div>
           </div>
           <div className="!absolute !bottom-2 !left-2 !text-cyan-300 !text-xs !font-semibold">
-            Suburb 2
+            {t.suburb2}
           </div>
           <div className="!absolute !top-2 !left-2 !text-cyan-200 !text-xs !font-semibold">
-            Suburb 3
+            {t.suburb3}
           </div>
         </div>
       </div>

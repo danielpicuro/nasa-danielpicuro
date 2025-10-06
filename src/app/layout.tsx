@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://with-trae-nasa.vercel.app/'),
 };
 
+import { AiCompanionProvider } from '@/contexts/AiCompanionContext';
+import { ConditionalAiLayout } from '@/components/conditional-ai-layout';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,9 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <div className="flex-grow">{children}</div>
-        </div>
+        <AiCompanionProvider>
+          <ConditionalAiLayout>
+            <div className="!flex !flex-col !min-h-screen">
+              <div className="!flex-grow">{children}</div>
+            </div>
+          </ConditionalAiLayout>
+        </AiCompanionProvider>
       </body>
     </html>
   );
