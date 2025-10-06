@@ -61,6 +61,18 @@ export function ProjectCarousel() {
 
   return (
     <div className="!relative !w-full !max-w-[1400px] !px-4">
+      {/* Invisible navigation buttons */}
+      <button
+        onClick={handlePrevious}
+        className="!absolute !left-0 !top-0 !h-full !w-1/4 !z-30"
+        aria-label="Previous project (invisible)"
+      />
+      <button
+        onClick={handleNext}
+        className="!absolute !right-0 !top-0 !h-full !w-1/4 !z-30"
+        aria-label="Next project (invisible)"
+      />
+
       {/* Carousel Container */}
       <div className="!relative !flex !items-center !justify-center !gap-4 !h-[600px]">
         {projects.map((project, index) => {
