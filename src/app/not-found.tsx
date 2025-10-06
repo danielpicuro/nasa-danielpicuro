@@ -1,11 +1,14 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, Home, Search } from 'lucide-react';
 import { Animated404 } from '@/components/not-found/animated-404';
 import { FloatingParticles } from '@/components/not-found/floating-particles';
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <div className="!min-h-screen !relative !overflow-hidden !bg-gradient-to-br !from-slate-900 !via-purple-900 !to-slate-900">
       {/* Gradient overlay */}
@@ -40,7 +43,7 @@ export default function NotFound() {
             </Link>
 
             <button
-              onClick={() => window.history.back()}
+              onClick={() => router.back()}
               className="!group !flex !items-center !gap-2 !px-6 !py-3 !bg-white/10 hover:!bg-white/20 !text-white !font-medium !rounded-lg !backdrop-blur-sm !border !border-white/20 !transition-all !duration-200 hover:!scale-105"
             >
               <ArrowLeft className="!w-5 !h-5" />
@@ -56,10 +59,9 @@ export default function NotFound() {
             </div>
           </div>
         </div>
-
-        {/* Decorative grid */}
-        <div className="!absolute !inset-0 !bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] !bg-[size:50px_50px] ![mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
       </div>
+      {/* Decorative grid */}
+      <div className="!absolute !inset-0 !bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] !bg-[size:50px_50px] ![mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)] pointer-events-none" />
     </div>
   );
 }
