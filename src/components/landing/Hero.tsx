@@ -8,14 +8,14 @@ export default function HomePage() {
   return (
     <main className="!relative !min-h-screen !w-full !overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className="!absolute !inset-0 !z-0">
         <img
           src="/images/earth.jpg"
-          alt="Vista aérea de ciudad"
-          className="h-full w-full object-cover"
+          alt="Aerial view of city"
+          className="!h-full !w-full !object-cover"
         />
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="!absolute !inset-0 !bg-black/40" />
       </div>
 
       {/* Content */}
@@ -23,12 +23,12 @@ export default function HomePage() {
         <div className="!max-w-4xl !flex !flex-col !align-middle">
           {/* Subtitle */}
           <h2 className="!mb-4 !font-sans !text-8xl !font-normal !italic !text-white !md:text-4xl !lg:text-5xl">
-            IA que redefine el urbanismo
+            AI that redefines urbanism
           </h2>
 
           {/* Main Heading */}
           <h1 className="!mb-12 !font-sans !text-3xl !font-bold !uppercase !leading-tight !text-white !md:text-6xl !lg:text-7xl">
-            DATOS QUE PIENSAN, CIUDADES QUE EVOLUCION
+            DATA THAT THINKS, CITIES THAT EVOLVE
           </h1>
 
           {/* CTA Button */}
@@ -36,7 +36,7 @@ export default function HomePage() {
             onClick={() => router.push('/login')}
             className="!w-30 !rounded-2xl !flex !flex-col !items-center !justify-center !relative !z-20 !bg-blue-600 !px-10 !py-3 !text-xl !font-bold !text-white !shadow-xl hover:!bg-blue-700 hover:!shadow-2xl !transition-all !cursor-pointer"
           >
-            Empezar
+            Get Started
           </div>
         </div>
       </div>

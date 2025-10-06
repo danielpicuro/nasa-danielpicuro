@@ -5,11 +5,11 @@ import { useState } from 'react';
 export function DayNightPanel() {
   const [mode, setMode] = useState<'day' | 'night'>('night');
   const [hour, setHour] = useState(16);
-  const [season, setSeason] = useState<'verano' | 'otono' | 'invierno' | 'primavera'>('otono');
+  const [season, setSeason] = useState<'summer' | 'autumn' | 'winter' | 'spring'>('autumn');
 
   return (
     <div className="!p-4 !border-t !border-slate-800">
-      <h3 className="!text-white !text-sm !font-semibold !mb-4">Día/Noche & Estaciones</h3>
+      <h3 className="!text-white !text-sm !font-semibold !mb-4">Day/Night & Seasons</h3>
       <div className="!flex !gap-2 !mb-4">
         <button
           onClick={() => setMode('day')}
@@ -19,7 +19,7 @@ export function DayNightPanel() {
               : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
           }`}
         >
-          ☀️ Día
+          ☀️ Day
         </button>
         <button
           onClick={() => setMode('night')}
@@ -29,11 +29,11 @@ export function DayNightPanel() {
               : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
           }`}
         >
-          🌙 Noche
+          🌙 Night
         </button>
       </div>
       <div className="!mb-4">
-        <label className="!text-gray-400 !text-xs !mb-2 !block">Hora del día: {hour}:00</label>
+        <label className="!text-gray-400 !text-xs !mb-2 !block">Time of day: {hour}:00</label>
         <input
           type="range"
           min="0"
@@ -44,47 +44,47 @@ export function DayNightPanel() {
         />
       </div>
       <div>
-        <label className="!text-gray-400 !text-xs !mb-2 !block">Estación</label>
+        <label className="!text-gray-400 !text-xs !mb-2 !block">Season</label>
         <div className="!grid !grid-cols-2 !gap-2">
           <button
-            onClick={() => setSeason('verano')}
+            onClick={() => setSeason('summer')}
             className={`!py-2 !px-3 !rounded !text-xs !font-medium !transition-colors ${
-              season === 'verano'
+              season === 'summer'
                 ? '!bg-cyan-500 !text-white'
                 : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
             }`}
           >
-            Verano
+            Summer
           </button>
           <button
-            onClick={() => setSeason('otono')}
+            onClick={() => setSeason('autumn')}
             className={`!py-2 !px-3 !rounded !text-xs !font-medium !transition-colors ${
-              season === 'otono'
+              season === 'autumn'
                 ? '!bg-cyan-500 !text-white'
                 : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
             }`}
           >
-            Otoño
+            Autumn
           </button>
           <button
-            onClick={() => setSeason('invierno')}
+            onClick={() => setSeason('winter')}
             className={`!py-2 !px-3 !rounded !text-xs !font-medium !transition-colors ${
-              season === 'invierno'
+              season === 'winter'
                 ? '!bg-cyan-500 !text-white'
                 : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
             }`}
           >
-            Invierno
+            Winter
           </button>
           <button
-            onClick={() => setSeason('primavera')}
+            onClick={() => setSeason('spring')}
             className={`!py-2 !px-3 !rounded !text-xs !font-medium !transition-colors ${
-              season === 'primavera'
+              season === 'spring'
                 ? '!bg-cyan-500 !text-white'
                 : '!bg-slate-800 !text-gray-400 hover:!bg-slate-700'
             }`}
           >
-            Primavera
+            Spring
           </button>
         </div>
       </div>

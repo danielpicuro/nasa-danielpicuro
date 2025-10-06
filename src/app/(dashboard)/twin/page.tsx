@@ -14,8 +14,8 @@ export default function TwinPage() {
 
   const sustainabilityData = [
     { label: 'CO₂', value: '120 kg/m²' },
-    { label: 'EUI', value: '85 kWh/m²/año' },
-    { label: 'Whater', value: '45 L/m²/día' },
+    { label: 'EUI', value: '85 kWh/m²/year' },
+    { label: 'Water', value: '45 L/m²/day' },
   ];
 
   return (
@@ -161,7 +161,7 @@ export default function TwinPage() {
 
             <ActionCard
               title="Visor 3D Web Editor"
-              subtitle="Carga un modelo para ver, revisar o editar"
+              subtitle="Load a model to view, review or edit"
               icon={Cube}
               variant="blue"
             />

@@ -4,16 +4,14 @@ import { Maximize2, ZoomIn, ZoomOut, RotateCw } from 'lucide-react';
 
 export function Viewer3D() {
   return (
-    <div className="!relative !w-full !h-full !bg-gradient-to-br !from-gray-700 !via-gray-600 !to-gray-500 !rounded-lg !overflow-hidden">
+    <div className="!relative !w-[90%] !h-[90%] !bg-gradient-to-br !from-gray-700 !via-gray-600 !to-gray-500 !rounded-lg !overflow-hidden">
       {/* Placeholder for 3D viewer */}
       <div className="!absolute !inset-0 !flex !items-center !justify-center">
-        <div className="!text-center !text-white/50">
-          <div className="!w-32 !h-32 !mx-auto !mb-4 !border-4 !border-white/30 !rounded-lg !transform !rotate-45 !flex !items-center !justify-center">
-            <div className="!w-20 !h-20 !border-4 !border-white/30 !rounded-lg !transform !-rotate-45"></div>
-          </div>
-          <p className="!text-lg !font-medium">3D Viewer</p>
-          <p className="!text-sm">BIM Model Visualization</p>
-        </div>
+        <img
+          src="/images/unreal-engine.gif"
+          alt="Lima City 3D View"
+          className="!w-full !h-full !object-cover"
+        />
       </div>
 
       {/* Viewer controls */}

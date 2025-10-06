@@ -27,7 +27,7 @@ export function InfrastructureStep({
           selected={selectedInfrastructure === 'cloud'}
           onSelect={onSelectInfrastructure}
           icon={<Cloud className="!w-12 !h-12" />}
-          title="Nube (Cloud)"
+          title="Cloud"
           description="Scalable, no hardware investment, remote access"
         />
 

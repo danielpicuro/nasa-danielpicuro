@@ -15,18 +15,18 @@ export function MapLayers({ selectedLayers, onLayersChange }: MapLayersProps) {
   };
 
   const layers = [
-    { id: 'relieve', label: 'Relieve (DEM/DTM)', icon: '🏔️' },
-    { id: 'uso-suelo', label: 'Uso de suelo', icon: '🗺️' },
-    { id: 'redes', label: 'Redes (agua/energía)', icon: '⚡' },
-    { id: 'edificios', label: 'Edificios', icon: '🏢' },
-    { id: 'subsuelo', label: 'Subsuelo', icon: '⚙️' },
-    { id: 'nubes', label: 'Nubes de puntos', icon: '📍' },
-    { id: 'sensores', label: 'Sensores móviles', icon: '📡' },
+    { id: 'relieve', label: 'Relief (DEM/DTM)', icon: '🏔️' },
+    { id: 'uso-suelo', label: 'Land use', icon: '🗺️' },
+    { id: 'redes', label: 'Networks (water/energy)', icon: '⚡' },
+    { id: 'edificios', label: 'Buildings', icon: '🏢' },
+    { id: 'subsuelo', label: 'Underground', icon: '⚙️' },
+    { id: 'nubes', label: 'Point clouds', icon: '📍' },
+    { id: 'sensores', label: 'Mobile sensors', icon: '📡' },
   ];
 
   return (
     <div className="!border-t !border-slate-800 !pt-4">
-      <h3 className="!text-white !text-sm !font-semibold !mb-3">Capas del mapa</h3>
+      <h3 className="!text-white !text-sm !font-semibold !mb-3">Map layers</h3>
 
       <div className="!space-y-3">
         {layers.map(layer => (

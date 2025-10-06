@@ -163,9 +163,9 @@ export function DirectorySidebar({ selectedLayers, onLayersChange }: DirectorySi
       <div className="!mt-6">
         <h3 className="!text-gray-400 !text-xs !uppercase !mb-2">Assets</h3>
         <div className="!space-y-2">
-          <div className="!text-sm !text-gray-300 !pl-2">Colector Principal A-12</div>
-          <div className="!text-sm !text-gray-300 !pl-2">Estación de Bombeo EB-03</div>
-          <div className="!text-sm !text-gray-300 !pl-2">Cuenca de Retención Norte</div>
+          <div className="!text-sm !text-gray-300 !pl-2">Main Collector A-12</div>
+          <div className="!text-sm !text-gray-300 !pl-2">Pumping Station EB-03</div>
+          <div className="!text-sm !text-gray-300 !pl-2">North Retention Basin</div>
         </div>
       </div>
 
