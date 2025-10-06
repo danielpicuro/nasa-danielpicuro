@@ -1,13 +1,20 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useAiCompanion } from '@/contexts/AiCompanionContext';
 import { PlanningNavbar } from '@/components/planning/planning-navbar';
 import { PlanningTabs } from '@/components/planning/planning-tabs';
 import { PlanningMetrics } from '@/components/planning/planning-metrics';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Planning',
-};
 
 export default function PlanningPage() {
+  const { setInitialPrompt } = useAiCompanion();
+
+  useEffect(() => {
+    setInitialPrompt(
+      'Welcome to the Urban Planning page. Here you can design and analyze different urban development scenarios. Ask me about creating a new plan, comparing metrics between zones, or for suggestions on sustainable infrastructure.'
+    );
+  }, [setInitialPrompt]);
+
   return (
     <div className="!min-h-screen !bg-[url('/images/bolivie.jpg')] !bg-cover !bg-center !relative">
       {/* Dark overlay for better text visibility */}
